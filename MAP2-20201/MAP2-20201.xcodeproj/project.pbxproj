@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -48,7 +48,6 @@
 				11B0844BC99428C1C8B20928 /* Pods-MAP2-20201.debug.xcconfig */,
 				C4FC4F9EE1730B6003B991FA /* Pods-MAP2-20201.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -73,15 +72,39 @@
 		7670BBE8244731E500BF28B5 /* MAP2-20201 */ = {
 			isa = PBXGroup;
 			children = (
+				76F4C8A524476951001AB005 /* Controller */,
+				76F4C8A424476948001AB005 /* View */,
+				76F4C8A324476917001AB005 /* Model */,
 				7670BBE9244731E500BF28B5 /* AppDelegate.swift */,
 				7670BBEB244731E500BF28B5 /* SceneDelegate.swift */,
-				7670BBED244731E500BF28B5 /* ViewController.swift */,
-				7670BBEF244731E500BF28B5 /* Main.storyboard */,
 				7670BBF2244731E600BF28B5 /* Assets.xcassets */,
-				7670BBF4244731E600BF28B5 /* LaunchScreen.storyboard */,
 				7670BBF7244731E600BF28B5 /* Info.plist */,
 			);
 			path = "MAP2-20201";
+			sourceTree = "<group>";
+		};
+		76F4C8A324476917001AB005 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		76F4C8A424476948001AB005 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				7670BBF4244731E600BF28B5 /* LaunchScreen.storyboard */,
+				7670BBEF244731E500BF28B5 /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		76F4C8A524476951001AB005 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				7670BBED244731E500BF28B5 /* ViewController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 		9A7F9F1F159EF6C65DFDBBC1 /* Frameworks */ = {
