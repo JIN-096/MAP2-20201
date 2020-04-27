@@ -74,19 +74,19 @@ class Crawler
             //transform it into a local object (Item)
             for element in elements {
                 let num = try element.select(".num").text();
-                               let title = try element.select("a").text()
-                               let ref : String =  try element.select("a").attr("href")
-                               let writer = try element.select(".writer").text()
-                               let date = try element.select(".date").text()
-                               let hit = try element.select(".hit").text()
-                               let file = try element.select(".file").text().elementsEqual("")
+                let title = try element.select("a").text()
+                let ref : String =  try element.select("a").attr("href")
+                let writer = try element.select(".writer").text()
+                let date = try element.select(".date").text()
+                let hit = try element.select(".hit").text()
+                let file = try element.select(".file").text().elementsEqual("")
                 notices.append(Notice(num: num,title: title,ref: ref,wrtier: writer,date: date,hit: hit,file: file))
             }
             
         } catch let error {
             print("Error: \(error)")
         }
-         return notices
+        return notices
     }
     
     //computer.knu.ac.kr 전체공지
@@ -113,53 +113,74 @@ class Crawler
                 let hit = try element.select(".bbs_hit").text()
                 let file = false
                 notices.append(Notice(num: num,title: title,ref: ref,wrtier: writer,date: date,hit: hit,file: file))
-             //   print("num = \(num)" , "title = \(title)" , "title_to = \(ref)" , "writer = \(writer)" ,"date = \(date)" ,"hit = \(hit)" , "file 유무 : \(file)",separator : "\n")
-               // print("========================================================")
+                //   print("num = \(num)" , "title = \(title)" , "title_to = \(ref)" , "writer = \(writer)" ,"date = \(date)" ,"hit = \(hit)" , "file 유무 : \(file)",separator : "\n")
+                // print("========================================================")
             }
             
         } catch let error {
             print("Error: \(error)")
         }
-         return notices
+        return notices
     }
     
-   //computer.knu.ac.kr 학부공지
+    //computer.knu.ac.kr 학부공지
     func computer_major_notice_crawl(URL : String?) -> [Notice]?
-   {
-       var document : Document?
-       let url = URL ?? "http://computer.knu.ac.kr/06_sub/02_sub_2.html"
-       document = downloadHTML(input_URL: url) ?? nil
-       if(document == nil){
-           return nil
-       }
-       var notices = [Notice]()
-       let selector = "tbody>tr"
-       do {
-           //여기서  element객체를 css selector를 통해 파싱해서 element에 넣어줌.
-           let elements: Elements = try document!.select(selector )
-           //transform it into a local object (Item)
-           for element in elements {
-               let num = try element.select(".bbs_num").text();
-               let title = try element.select("a").text()
-               let ref : String =  try element.select("a").attr("href")
-               let writer = try element.select(".bbs_writer").text()
-               let date = try element.select(".bbs_date").text()
-               let hit = try element.select(".bbs_hit").text()
-               let file = false
-               notices.append(Notice(num: num,title: title,ref: ref,wrtier: writer,date: date,hit: hit,file: file))
-            //   print("num = \(num)" , "title = \(title)" , "title_to = \(ref)" , "writer = \(writer)" ,"date = \(date)" ,"hit = \(hit)" , "file 유무 : \(file)",separator : "\n")
-              // print("========================================================")
-           }
-           
-       } catch let error {
-           print("Error: \(error)")
-       }
+    {
+        var document : Document?
+        let url = URL ?? "http://computer.knu.ac.kr/06_sub/02_sub_2.html"
+        document = downloadHTML(input_URL: url) ?? nil
+        if(document == nil){
+            return nil
+        }
+        var notices = [Notice]()
+        let selector = "tbody>tr"
+        do {
+            //여기서  element객체를 css selector를 통해 파싱해서 element에 넣어줌.
+            let elements: Elements = try document!.select(selector )
+            //transform it into a local object (Item)
+            for element in elements {
+                let num = try element.select(".bbs_num").text();
+                let title = try element.select("a").text()
+                let ref : String =  try element.select("a").attr("href")
+                let writer = try element.select(".bbs_writer").text()
+                let date = try element.select(".bbs_date").text()
+                let hit = try element.select(".bbs_hit").text()
+                let file = false
+                notices.append(Notice(num: num,title: title,ref: ref,wrtier: writer,date: date,hit: hit,file: file))
+                //   print("num = \(num)" , "title = \(title)" , "title_to = \(ref)" , "writer = \(writer)" ,"date = \(date)" ,"hit = \(hit)" , "file 유무 : \(file)",separator : "\n")
+                // print("========================================================")
+            }
+            
+        } catch let error {
+            print("Error: \(error)")
+        }
         return notices
-   }
+    }
     
     func academic_calendar_crawl()
     {
-        
+        var document : Document?
+        let selector = "#calendar > dl"
+        document = downloadHTML(input_URL: "http://knu.ac.kr/wbbs/wbbs/user/yearSchedule/index.action?menu_idx=43&schedule.search_year=2020") ?? nil
+        if(document != nil)
+        {
+            do{
+                let elements : Elements = try document!.select(selector)
+                for element in elements{
+                    print("==========================")
+                    print(try element.select("dt").text())
+                    print("---------월 별 구분 ---------")
+                    let fuck : Elements = try element.select(".list > ul > li")
+                    for fucking in fuck{
+                        print(try fucking.text())
+                    }
+                    print("===================")
+                }
+            }catch let error{
+                print("error : \(error)")
+            }
+        }
+        print("?")
     }
     
     func curriculum_crawl()
