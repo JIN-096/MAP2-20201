@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="qco-eM-ome">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="qco-eM-ome">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -170,7 +170,7 @@
         <!--Home-->
         <scene sceneID="Q8G-MX-2B5">
             <objects>
-                <viewController id="Rfg-Ud-rQh" sceneMemberID="viewController">
+                <viewController id="Rfg-Ud-rQh" customClass="ViewController" customModule="MAP2_20201" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="k17-rn-GK9"/>
                         <viewControllerLayoutGuide type="bottom" id="pXp-1s-Z3Z"/>
@@ -400,7 +400,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="arrow.right" catalog="system" width="64" height="48"/>
-        <image name="greaterthan" catalog="system" width="64" height="54"/>
+        <image name="arrow.right" catalog="system" width="128" height="98"/>
+        <image name="greaterthan" catalog="system" width="128" height="111"/>
     </resources>
 </document>
