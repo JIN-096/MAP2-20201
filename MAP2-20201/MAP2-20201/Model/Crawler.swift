@@ -157,8 +157,10 @@ class Crawler
         return notices
     }
     
-    func academic_calendar_crawl()
+    //학사일정
+    func academic_calendar_crawl() -> [Calendar]?
     {
+        var calendars = [Calendar]()
         var document : Document?
         let selector = "#calendar > dl"
         document = downloadHTML(input_URL: "http://knu.ac.kr/wbbs/wbbs/user/yearSchedule/index.action?menu_idx=43&schedule.search_year=2020") ?? nil
@@ -168,24 +170,117 @@ class Crawler
                 let elements : Elements = try document!.select(selector)
                 for element in elements{
                     print("==========================")
+                    let full_date = try element.select("dt").text()
+                    let year = Int(full_date.prefix(4))!
+                    let start_index = full_date.index(full_date.startIndex,offsetBy: 5)
+                    let end_index = full_date.index(full_date.startIndex, offsetBy: 6)
+                    let month = Int(full_date[start_index...end_index]) ?? 0
+                    
                     print(try element.select("dt").text())
+                    
                     print("---------월 별 구분 ---------")
+                    var schedules : [Schedule] = []
                     let fuck : Elements = try element.select(".list > ul > li")
                     for fucking in fuck{
-                        print(try fucking.text())
+                        let full_string = try fucking.text()
+                        let day = String(full_string.prefix(8))
+                        let index = full_string.index(full_string.startIndex,offsetBy: 8)
+                        let content = String(full_string.suffix(from: index))
+                        schedules.append(Schedule(day: day, content: content))
+                        print("날짜 : " + day)
+                        print("내용 : " + content)
                     }
+                    calendars.append(Calendar(year: year, month: month, schedules: schedules))
                     print("===================")
                 }
             }catch let error{
                 print("error : \(error)")
             }
+            return calendars
         }
-        print("?")
+       return nil
     }
     
-    func curriculum_crawl()
+    //교과과정(심컴기준 커리큘럼)
+    func curriculum_crawl() -> [Curriculum]?
     {
-        
+        var curriculum = [Curriculum]()
+        var year = 0
+        var code : String = ""
+        var name : String = ""
+        var type : String = ""
+        var grade : String
+        var necessary = false
+        var design = false
+        var document : Document?
+        let selector = ".sub-table2 > tbody > tr"
+        document = downloadHTML(input_URL: "http://computer.knu.ac.kr/03_sub/02_sub_2.html") ?? nil
+        if(document != nil)
+        {
+            do{
+                let elements : Elements = try document!.select(selector)
+                for element in elements{
+                    let sub_year = try element.select("th[rowspan]").text()
+                    let sub_type = try element.select("td[rowspan]").first()?.text()
+                   // print("====================")
+                    if(sub_year != ""){
+                     //   print(sub_year)
+                        year = Int(sub_year) ?? 0
+                    }
+                    let fuckelements = try element.select("td")
+                    var index = 0
+                    for fuckelement in fuckelements
+                    {
+                        let fuck = try fuckelement.text()
+                        if(fuck == sub_type){
+                            type = fuck
+                           // print(type)
+                            continue
+                        }
+                    //    print(index, terminator : " ")
+                      //  print(fuck)
+                        switch(index % 3)
+                        {
+                        case 0 :
+                            code = fuck
+                            break
+                        case 1 :
+                            name = fuck
+                           // print(try fuckelement.select("img[src*=icon-1]").isEmpty())
+                            if(try !fuckelement.select("img[src*=icon-1]").isEmpty())
+                            {
+                                necessary = true
+                            }
+                            if(try !fuckelement.select("img[src*=icon-2]").isEmpty())
+                            {
+                                design = true
+                            }
+                            break
+                        case 2 :
+                            grade = fuck
+                            if(index / 3 == 0)
+                            {
+                                curriculum.append(Curriculum(year: year, semester: 1, type: type, code: code, name: name, grades: grade, necessary: necessary, design: design))
+                            }
+                            else{
+                               curriculum.append(Curriculum(year: year, semester: 2, type: type, code: code, name: name, grades: grade, necessary: necessary, design: design))
+                            }
+                            necessary = false
+                            design = false
+                            break
+                        default:
+                            break
+                        }
+                        index += 1
+                    }
+                   // print("====================")
+                }
+            }catch let error{
+                print("error : \(error)")
+            }
+            return curriculum
+        }
+        return nil
     }
     
     func time_table_crawl()

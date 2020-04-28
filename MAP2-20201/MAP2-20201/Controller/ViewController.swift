@@ -50,6 +50,10 @@ class ViewController: UIViewController {
 //        }
 //        print("본관공지 end")
 //        print("===============================")
+        
+        
+        
+        
 //        print("===============================")
 //        print("< computer.knu.ac.kr 전체 공지 >\n\n")
 //        let total_notice : [Notice]? = Crawler.shared.computer_total_notice_crawl(URL: nil)
@@ -59,6 +63,9 @@ class ViewController: UIViewController {
 //        print("전체공지 end")
 //        print("===============================")
 //        print("===============================")
+        
+        
+        
 //        print("< computer.knu.ac.kr 학부 공지 >")
 //        let major_notice : [Notice]? = Crawler.shared.computer_major_notice_crawl(URL: nil)
 //        for data in major_notice!
@@ -67,7 +74,35 @@ class ViewController: UIViewController {
 //        }
 //        print("학부공지 end")
 //        print("===============================")
-        Crawler.shared.academic_calendar_crawl()
+        
+        
+        
+        let calendars : [Calendar]? = Crawler.shared.academic_calendar_crawl()
+        for data in calendars!{
+            print("\(data.year) 년")
+            print("\(data.month) 월")
+            for input in data.schedules
+            {
+                print(input.day)
+                print(input.content)
+            }
+             print("---------")
+        }
+        ////-==============교육과정 ㅓ예시===========================
+//        let curriculum : [Curriculum]? = Crawler.shared.curriculum_crawl()
+//        for data in curriculum!
+//        {
+//            print("학년 " + String(data.year))
+//            print("학기 " + String(data.semester))
+//            print("교과구분 " + data.type)
+//            print("코드 " + data.code)
+//            print("교과명 " + data.name)
+//            print("학점 " + data.grades)
+//            print("필수여부" + String(data.necessary))
+//            print("설계여부" + String(data.design))
+//            print("-----------------------------")
+//        }
+        ///==========================================
         // Do any additional setup after loading the view.
     }
     
