@@ -8,6 +8,7 @@
 
 import Foundation
 import SwiftSoup
+import Alamofire
 
 //crawler 싱글톤 객체로 생성하여 ~> 게터 세터가 필요한가? 천천히 생각해본다.
 //싱글톤을 사용하는 이유는 메모리 낭비를 방지하고 데이터를 공유하는데 있다.
@@ -198,7 +199,7 @@ class Crawler
             }
             return calendars
         }
-       return nil
+        return nil
     }
     
     //교과과정(심컴기준 커리큘럼)
@@ -209,7 +210,7 @@ class Crawler
         var code : String = ""
         var name : String = ""
         var type : String = ""
-        var grade : String
+        var point : String
         var necessary = false
         var design = false
         var document : Document?
@@ -222,9 +223,9 @@ class Crawler
                 for element in elements{
                     let sub_year = try element.select("th[rowspan]").text()
                     let sub_type = try element.select("td[rowspan]").first()?.text()
-                   // print("====================")
+                    // print("====================")
                     if(sub_year != ""){
-                     //   print(sub_year)
+                        //   print(sub_year)
                         year = Int(sub_year) ?? 0
                     }
                     let fuckelements = try element.select("td")
@@ -234,11 +235,11 @@ class Crawler
                         let fuck = try fuckelement.text()
                         if(fuck == sub_type){
                             type = fuck
-                           // print(type)
+                            // print(type)
                             continue
                         }
-                    //    print(index, terminator : " ")
-                      //  print(fuck)
+                        //    print(index, terminator : " ")
+                        //  print(fuck)
                         switch(index % 3)
                         {
                         case 0 :
@@ -246,7 +247,7 @@ class Crawler
                             break
                         case 1 :
                             name = fuck
-                           // print(try fuckelement.select("img[src*=icon-1]").isEmpty())
+                            // print(try fuckelement.select("img[src*=icon-1]").isEmpty())
                             if(try !fuckelement.select("img[src*=icon-1]").isEmpty())
                             {
                                 necessary = true
@@ -257,13 +258,13 @@ class Crawler
                             }
                             break
                         case 2 :
-                            grade = fuck
+                            point = fuck
                             if(index / 3 == 0)
                             {
-                                curriculum.append(Curriculum(year: year, semester: 1, type: type, code: code, name: name, grades: grade, necessary: necessary, design: design))
+                                curriculum.append(Curriculum(year: year, semester: 1, type: type, code: code, name: name, point: point, necessary: necessary, design: design))
                             }
                             else{
-                               curriculum.append(Curriculum(year: year, semester: 2, type: type, code: code, name: name, grades: grade, necessary: necessary, design: design))
+                                curriculum.append(Curriculum(year: year, semester: 2, type: type, code: code, name: name, point: point, necessary: necessary, design: design))
                             }
                             necessary = false
                             design = false
@@ -273,7 +274,7 @@ class Crawler
                         }
                         index += 1
                     }
-                   // print("====================")
+                    // print("====================")
                 }
             }catch let error{
                 print("error : \(error)")
@@ -288,13 +289,158 @@ class Crawler
         
     }
     
-    func grade_crawl()
+    //0 : 이수성적, 1:필수과목이수내역 2:설계과목이수내역
+    //쿠키 세션 태스크 같이 연결해서 써야되는거 같음 내일 ㄱ
+    func grade_crawl(category type : Int)
+    {
+        //    print(Person_Info.shared.login_status)
+        //      print(Person_Info.shared.cookie)
+        var selector : String
+        switch(type)
+        {
+        case 0 :
+            selector = "fieldset#tab_FU > table > tbody > tr"
+            break
+        case 1 :
+            selector = "fieldset#essentTab > table > tbody > tr"
+            break
+        case 2 :
+            selector = "fieldset#designTab > table > tbody > tr"
+            break
+            
+        default:
+            selector = ""
+            break
+        }
+        //쿠키 세팅(로그인 성공해야 후에 되는데 이거 조건 달아야..겟지?)
+        // if(Person_Info.sharedInstance.login_status){
+        //   Person_Info.sharedInstance.setCookies()
+        // }
+        
+        
+        //Person_Info.sharedInstance.setCookies()
+        //print(
+       // print("밖  \(Person_Info.shared.cookie)")
+       // self.login()
+        self.setCookies()
+        AF.request("http://abeek.knu.ac.kr/Keess/kees/web/stue/stueStuRecEnq/list.action", method: .get).responseString{response in
+            switch response.result
+            {
+            case .success(let a) :
+                do{
+                    //print(a)
+                    print("크롤러안  : \(Person_Info.shared.login_status)")
+                    print("크롤러안 :  \(Person_Info.shared.cookie)")
+                    let html = try response.result.get()
+                  //  print(html)
+                    var document : Document = Document.init("")
+                    document = try SwiftSoup.parse(html)
+                    let elements : Elements = try document.select(selector)
+                    for element in elements{
+                        print(try element.text())
+                    }
+                    
+                }catch{
+                    
+                }
+                break
+            case .failure(let error) :
+                print("error : \(error)")
+                break
+            }
+        }
+    }
+    
+    //추후 진행 예정 마일리지 내용 없어서 안에 구조를 모름 ㅎ
+    func mileage_crawl()
     {
         
     }
     
-    func mileage_crawl()
+    func try_login(completionHandler : @escaping (Result<[HTTPCookie], Error>) -> Void)
     {
+        //로그인 다시 할때 false로 하고 새로 쿠키 받아옴.(좀 더 생각)
+        
+        //self.login_status = false
+        let ID = "shs960501"
+        let PW = "song5961!"
+        let parameter = [
+            "user.usr_id" : ID,
+            "user.passwd" : PW
+        ]
+        
+        //var output : String
+        AF.request("http://abeek.knu.ac.kr/Keess/comm/support/login/login.action", method: .post, parameters: parameter).responseString{ response in
+            switch response.result
+            {
+            case .success( _) :
+                do{
+                    let html = try response.result.get()
+                    var document : Document = Document.init("")
+                    document = try SwiftSoup.parse(html)
+                    let elements : Elements = try document.select("#loginBtn")
+                    if(elements.isEmpty())
+                    {
+                        print("로그인 성공")
+                        //   self.login_status = true
+                        if let headerFields = response.response?.allHeaderFields as? [String : String]{
+                            let cookies = HTTPCookie.cookies(withResponseHeaderFields: headerFields, for: (response.request?.url!)!)
+                            completionHandler(.success(cookies))
+                        }
+                    }
+                    else{
+                        print("로그인 실패")
+                        let login_Error = NSError(domain: "", code: 111, userInfo: [NSLocalizedDescriptionKey: "login_fail"])
+                        completionHandler(.failure(login_Error))
+                    }
+                    
+                }catch{
+                    
+                }
+                
+                break
+            case .failure(let error) :
+                completionHandler(.failure(error))
+                break
+                
+            }
+        }
+    }
+    
+    func login()
+    {
+        try_login{result in
+            switch result{
+            case .success(let cookies):
+                Person_Info.shared.login_status = true
+                //print(cookies)
+                Person_Info.shared.cookie = cookies
+              //  self.setCookies(cookies : cookies)
+                break
+            case .failure(let error):
+                Person_Info.shared.login_status = false
+                print("error : \(error)")
+                break
+            }
+        }
+    }
+    func setCookies()
+    {
+        
+            if(Person_Info.shared.login_status)
+            {
+                //let configuration = URLSessionConfiguration.af.default
+                print(Person_Info.shared.cookie)
+                print("setCookies : ")
+                for cookie in Person_Info.shared.cookie
+                {
+                    AF.session.configuration.httpCookieStorage?.setCookie(cookie)
+                    
+                    print(cookie)
+                    print("========")
+                }
+                print(Person_Info.shared.login_status)
+            }
         
     }
 }

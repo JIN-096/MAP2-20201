@@ -75,20 +75,22 @@ class ViewController: UIViewController {
 //        print("학부공지 end")
 //        print("===============================")
         
-        
-        
-        let calendars : [Calendar]? = Crawler.shared.academic_calendar_crawl()
-        for data in calendars!{
-            print("\(data.year) 년")
-            print("\(data.month) 월")
-            for input in data.schedules
-            {
-                print(input.day)
-                print(input.content)
-            }
-             print("---------")
-        }
-        ////-==============교육과정 ㅓ예시===========================
+//
+//        //학사일정
+//        let calendars : [Calendar]? = Crawler.shared.academic_calendar_crawl()
+//        for data in calendars!{
+//            print("\(data.year) 년")
+//            print("\(data.month) 월")
+//            for input in data.schedules
+//            {
+//                print(input.day)
+//                print(input.content)
+//            }
+//             print("---------")
+//        }
+//
+//
+//        //-==============교육과정 ㅓ예시===========================
 //        let curriculum : [Curriculum]? = Crawler.shared.curriculum_crawl()
 //        for data in curriculum!
 //        {
@@ -97,12 +99,15 @@ class ViewController: UIViewController {
 //            print("교과구분 " + data.type)
 //            print("코드 " + data.code)
 //            print("교과명 " + data.name)
-//            print("학점 " + data.grades)
+//            print("학점 " + data.point)
 //            print("필수여부" + String(data.necessary))
 //            print("설계여부" + String(data.design))
 //            print("-----------------------------")
 //        }
-        ///==========================================
+//        ///==========================================
+       Crawler.shared.login()
+        Crawler.shared.grade_crawl(category: 0)
+       // Crawler.shared.grade_crawl(category: 0)
         // Do any additional setup after loading the view.
     }
     
