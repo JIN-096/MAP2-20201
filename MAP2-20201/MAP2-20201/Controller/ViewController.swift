@@ -63,14 +63,14 @@ class ViewController: UIViewController {
 //        print("전체공지 end")
 //        print("===============================")
 //        print("===============================")
-        
-        
-        
+    
+//
 //        print("< computer.knu.ac.kr 학부 공지 >")
 //        let major_notice : [Notice]? = Crawler.shared.computer_major_notice_crawl(URL: nil)
 //        for data in major_notice!
 //        {
 //            print("학부공지 : " + data.title)
+//            print(data.)
 //        }
 //        print("학부공지 end")
 //        print("===============================")
@@ -105,9 +105,16 @@ class ViewController: UIViewController {
 //            print("-----------------------------")
 //        }
 //        ///==========================================
-       Crawler.shared.login()
-        Crawler.shared.grade_crawl(category: 0)
+      //  Person_Info.shared.login()
        // Crawler.shared.grade_crawl(category: 0)
+        //print(Person_Info.shared.login_status)
+        
+        Person_Info.shared.login()
+
+//        Person_Info.shared.setCookies(cookies: )
+//
+            Crawler.shared.grade_crawl(category: 0)
+        //Person_Info.shared.setCookies(cookies: Person_Info.shared.cookie)
         // Do any additional setup after loading the view.
     }
     

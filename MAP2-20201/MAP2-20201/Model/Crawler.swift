@@ -292,8 +292,8 @@ class Crawler
     //0 : 이수성적, 1:필수과목이수내역 2:설계과목이수내역
     //쿠키 세션 태스크 같이 연결해서 써야되는거 같음 내일 ㄱ
     func grade_crawl(category type : Int)
-    {
-        //    print(Person_Info.shared.login_status)
+    {	
+        //    print(Person_Info.sharedd.login_status)
         //      print(Person_Info.shared.cookie)
         var selector : String
         switch(type)
@@ -322,17 +322,16 @@ class Crawler
         //print(
        // print("밖  \(Person_Info.shared.cookie)")
        // self.login()
-        self.setCookies()
+        //self.setCookies()
+//        print("**********************")
+//        print(AF.session.configuration.httpCookieStorage?.cookies ?? "XXXXXXXXXXX")
+//        print("**********************")
         AF.request("http://abeek.knu.ac.kr/Keess/kees/web/stue/stueStuRecEnq/list.action", method: .get).responseString{response in
             switch response.result
             {
-            case .success(let a) :
+            case .success(let html) :
                 do{
-                    //print(a)
-                    print("크롤러안  : \(Person_Info.shared.login_status)")
-                    print("크롤러안 :  \(Person_Info.shared.cookie)")
-                    let html = try response.result.get()
-                  //  print(html)
+                    //let html = try response.result.get()
                     var document : Document = Document.init("")
                     document = try SwiftSoup.parse(html)
                     let elements : Elements = try document.select(selector)
@@ -354,93 +353,6 @@ class Crawler
     //추후 진행 예정 마일리지 내용 없어서 안에 구조를 모름 ㅎ
     func mileage_crawl()
     {
-        
-    }
-    
-    func try_login(completionHandler : @escaping (Result<[HTTPCookie], Error>) -> Void)
-    {
-        //로그인 다시 할때 false로 하고 새로 쿠키 받아옴.(좀 더 생각)
-        
-        //self.login_status = false
-        let ID = "shs960501"
-        let PW = "song5961!"
-        let parameter = [
-            "user.usr_id" : ID,
-            "user.passwd" : PW
-        ]
-        
-        //var output : String
-        AF.request("http://abeek.knu.ac.kr/Keess/comm/support/login/login.action", method: .post, parameters: parameter).responseString{ response in
-            switch response.result
-            {
-            case .success( _) :
-                do{
-                    let html = try response.result.get()
-                    var document : Document = Document.init("")
-                    document = try SwiftSoup.parse(html)
-                    let elements : Elements = try document.select("#loginBtn")
-                    if(elements.isEmpty())
-                    {
-                        print("로그인 성공")
-                        //   self.login_status = true
-                        if let headerFields = response.response?.allHeaderFields as? [String : String]{
-                            let cookies = HTTPCookie.cookies(withResponseHeaderFields: headerFields, for: (response.request?.url!)!)
-                            completionHandler(.success(cookies))
-                        }
-                    }
-                    else{
-                        print("로그인 실패")
-                        let login_Error = NSError(domain: "", code: 111, userInfo: [NSLocalizedDescriptionKey: "login_fail"])
-                        completionHandler(.failure(login_Error))
-                    }
-                    
-                }catch{
-                    
-                }
-                
-                break
-            case .failure(let error) :
-                completionHandler(.failure(error))
-                break
-                
-            }
-        }
-    }
-    
-    func login()
-    {
-        try_login{result in
-            switch result{
-            case .success(let cookies):
-                Person_Info.shared.login_status = true
-                //print(cookies)
-                Person_Info.shared.cookie = cookies
-              //  self.setCookies(cookies : cookies)
-                break
-            case .failure(let error):
-                Person_Info.shared.login_status = false
-                print("error : \(error)")
-                break
-            }
-        }
-    }
-    func setCookies()
-    {
-        
-            if(Person_Info.shared.login_status)
-            {
-                //let configuration = URLSessionConfiguration.af.default
-                print(Person_Info.shared.cookie)
-                print("setCookies : ")
-                for cookie in Person_Info.shared.cookie
-                {
-                    AF.session.configuration.httpCookieStorage?.setCookie(cookie)
-                    
-                    print(cookie)
-                    print("========")
-                }
-                print(Person_Info.shared.login_status)
-            }
         
     }
 }

@@ -14,6 +14,7 @@ import SwiftSoup
 
 public class Person_Info
 {
+    
     static let shared = Person_Info()
      var login_status : Bool = false
      lazy var cookie : [HTTPCookie] = []
@@ -22,7 +23,7 @@ public class Person_Info
     private var _passwd : String = ""
     private var _student_num : String = ""
     
-    init()
+    private init()
     {}
     
     //yes에 로그인 쿠키 받아오기.
@@ -32,13 +33,15 @@ public class Person_Info
         //로그인 다시 할때 false로 하고 새로 쿠키 받아옴.(좀 더 생각)
         
         //self.login_status = false
-        let ID = "shs960501"
-        let PW = "song5961!"
+//        let ID = "wan2good"
+//        let PW = "wan2good!@"
+        let ID = "gwh1108"
+        let PW = "tkrk1357@"
         let parameter = [
             "user.usr_id" : ID,
             "user.passwd" : PW
         ]
-    
+        
         //var output : String
         AF.request("http://abeek.knu.ac.kr/Keess/comm/support/login/login.action", method: .post, parameters: parameter).responseString{ response in
             switch response.result
@@ -83,12 +86,14 @@ public class Person_Info
             switch result{
             case .success(let cookies):
                 self.login_status = true
+                print("success")
                 //print(cookies)
-                self.cookie = cookies
-                self.setCookies(cookies : cookies)
+                Person_Info.shared.cookie = cookies
+               self.setCookies(cookies : cookies)
                 break
             case .failure(let error):
-                self.login_status = false
+                print("false")
+             //   Person_Info.shared.login_status = false
                 print("error : \(error)")
                 break
             }
@@ -96,21 +101,19 @@ public class Person_Info
     }
     func setCookies(cookies : [HTTPCookie])
     {
-        if(self.login_status)
+        if(Person_Info.shared.login_status)
         {
-            //let configuration = URLSessionConfiguration.af.default
+          //  let configuration = URLSessionConfiguration.af.default
            // print(cookies)
             print("setCookies : ")
-            for cookie in self.cookie
+            for cookie in Person_Info.shared.cookie
             {
                 AF.session.configuration.httpCookieStorage?.setCookie(cookie)
-
-                print(cookie)
-                print("========")
             }
-            print(self.login_status)
+            print(Person_Info.shared.login_status)
+         //   print(AF.session.configuration.httpCookieStorage?.cookies ?? "XX")
+           Crawler.shared.grade_crawl(category: 0)
         }
-        
     }
     
 }
