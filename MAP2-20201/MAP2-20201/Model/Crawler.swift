@@ -31,6 +31,7 @@ class Crawler
     
     //생성자를 private으로 제한해서 외부에서 인스턴스를 생성하지 못하도록 강제하여, 유니크한 싱글톤을 만든다.
     private init() {}
+    
     //Download HTML
     func downloadHTML(input_URL : String) -> Document?{
         var document: Document = Document.init("")
