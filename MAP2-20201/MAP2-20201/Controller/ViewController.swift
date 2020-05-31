@@ -37,19 +37,22 @@ class ViewController: UIViewController {
          } catch{
          print("")
          }*/
+        
         //사용법 크롤러 싱글톤이라서 shared로 받아서 function실행
         //기본으로 받을때 url은 nil로 줘도됨. 이거 나중에 바꿀꺼 같긴한데
         // 다음페이지 이런거 할때 어떻게 할지 고민중. 그래서 일단 파라미터 optional로 해둠.
         //기본 사용법은 밑과 같을 거 같음.
         
-//        print("< knu.ac.kr 본관공지 >\n\n")
-//        let main_notice : [Notice]? = Crawler.shared.knu_notice_crawl(URL: nil)
-//        for data in main_notice!
-//        {
-//            print("본관공지 : " + data.title)
-//        }
-//        print("본관공지 end")
-//        print("===============================")
+        print("< knu.ac.kr 본관공지 >\n\n")
+        let main_notice : [Notice]? = Crawler.shared.knu_notice_crawl(URL: nil)
+        for data in main_notice!
+        {
+            print("번호 : " + data.num)
+            print("본관공지 : " + data.title)
+            
+        }
+        print("본관공지 end")
+        print("===============================")
         
         
         
@@ -77,17 +80,17 @@ class ViewController: UIViewController {
         
         
         
-        let calendars : [Calendar]? = Crawler.shared.academic_calendar_crawl()
-        for data in calendars!{
-            print("\(data.year) 년")
-            print("\(data.month) 월")
-            for input in data.schedules
-            {
-                print(input.day)
-                print(input.content)
-            }
-             print("---------")
-        }
+//        let calendars : [Calendar]? = Crawler.shared.academic_calendar_crawl()
+//        for data in calendars!{
+//            print("\(data.year) 년")
+//            print("\(data.month) 월")
+//            for input in data.schedules
+//            {
+//                print(input.day)
+//                print(input.content)
+//            }
+//             print("---------")
+//        }
         ////-==============교육과정 ㅓ예시===========================
 //        let curriculum : [Curriculum]? = Crawler.shared.curriculum_crawl()
 //        for data in curriculum!

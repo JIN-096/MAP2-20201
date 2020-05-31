@@ -61,7 +61,7 @@ class Crawler
     func knu_notice_crawl(URL : String?) -> [Notice]?
     {
         var document : Document?
-        let url = URL ?? "http://knu.ac.kr/wbbs/wbbs/bbs/btin/list.action?bbs_cde=1&menu_idx=67"
+        let url = URL ?? "https://knu.ac.kr/wbbs/wbbs/bbs/btin/stdList.action?menu_idx=42"
         document = downloadHTML(input_URL: url) ?? nil
         if(document == nil){
             return nil
