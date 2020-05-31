@@ -66,20 +66,22 @@ class ViewController: UIViewController {
 //        print("전체공지 end")
 //        print("===============================")
 //        print("===============================")
-        
-        
-        
+    
+//
 //        print("< computer.knu.ac.kr 학부 공지 >")
 //        let major_notice : [Notice]? = Crawler.shared.computer_major_notice_crawl(URL: nil)
 //        for data in major_notice!
 //        {
 //            print("학부공지 : " + data.title)
+//            print(data.)
 //        }
 //        print("학부공지 end")
 //        print("===============================")
         
         
         
+//
+//        //학사일정
 //        let calendars : [Calendar]? = Crawler.shared.academic_calendar_crawl()
 //        for data in calendars!{
 //            print("\(data.year) 년")
@@ -92,6 +94,9 @@ class ViewController: UIViewController {
 //             print("---------")
 //        }
         ////-==============교육과정 ㅓ예시===========================
+//
+//
+//        //-==============교육과정 ㅓ예시===========================
 //        let curriculum : [Curriculum]? = Crawler.shared.curriculum_crawl()
 //        for data in curriculum!
 //        {
@@ -100,12 +105,22 @@ class ViewController: UIViewController {
 //            print("교과구분 " + data.type)
 //            print("코드 " + data.code)
 //            print("교과명 " + data.name)
-//            print("학점 " + data.grades)
+//            print("학점 " + data.point)
 //            print("필수여부" + String(data.necessary))
 //            print("설계여부" + String(data.design))
 //            print("-----------------------------")
 //        }
-        ///==========================================
+//        ///==========================================
+      //  Person_Info.shared.login()
+       // Crawler.shared.grade_crawl(category: 0)
+        //print(Person_Info.shared.login_status)
+        
+        Person_Info.shared.login()
+
+//        Person_Info.shared.setCookies(cookies: )
+//
+            Crawler.shared.grade_crawl(category: 0)
+        //Person_Info.shared.setCookies(cookies: Person_Info.shared.cookie)
         // Do any additional setup after loading the view.
     }
     

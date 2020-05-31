@@ -8,6 +8,7 @@
 
 import Foundation
 import SwiftSoup
+import Alamofire
 
 //crawler 싱글톤 객체로 생성하여 ~> 게터 세터가 필요한가? 천천히 생각해본다.
 //싱글톤을 사용하는 이유는 메모리 낭비를 방지하고 데이터를 공유하는데 있다.
@@ -30,6 +31,7 @@ class Crawler
     
     //생성자를 private으로 제한해서 외부에서 인스턴스를 생성하지 못하도록 강제하여, 유니크한 싱글톤을 만든다.
     private init() {}
+    
     //Download HTML
     func downloadHTML(input_URL : String) -> Document?{
         var document: Document = Document.init("")
@@ -198,7 +200,7 @@ class Crawler
             }
             return calendars
         }
-       return nil
+        return nil
     }
     
     //교과과정(심컴기준 커리큘럼)
@@ -209,7 +211,7 @@ class Crawler
         var code : String = ""
         var name : String = ""
         var type : String = ""
-        var grade : String
+        var point : String
         var necessary = false
         var design = false
         var document : Document?
@@ -222,9 +224,9 @@ class Crawler
                 for element in elements{
                     let sub_year = try element.select("th[rowspan]").text()
                     let sub_type = try element.select("td[rowspan]").first()?.text()
-                   // print("====================")
+                    // print("====================")
                     if(sub_year != ""){
-                     //   print(sub_year)
+                        //   print(sub_year)
                         year = Int(sub_year) ?? 0
                     }
                     let fuckelements = try element.select("td")
@@ -234,11 +236,11 @@ class Crawler
                         let fuck = try fuckelement.text()
                         if(fuck == sub_type){
                             type = fuck
-                           // print(type)
+                            // print(type)
                             continue
                         }
-                    //    print(index, terminator : " ")
-                      //  print(fuck)
+                        //    print(index, terminator : " ")
+                        //  print(fuck)
                         switch(index % 3)
                         {
                         case 0 :
@@ -246,7 +248,7 @@ class Crawler
                             break
                         case 1 :
                             name = fuck
-                           // print(try fuckelement.select("img[src*=icon-1]").isEmpty())
+                            // print(try fuckelement.select("img[src*=icon-1]").isEmpty())
                             if(try !fuckelement.select("img[src*=icon-1]").isEmpty())
                             {
                                 necessary = true
@@ -257,13 +259,13 @@ class Crawler
                             }
                             break
                         case 2 :
-                            grade = fuck
+                            point = fuck
                             if(index / 3 == 0)
                             {
-                                curriculum.append(Curriculum(year: year, semester: 1, type: type, code: code, name: name, grades: grade, necessary: necessary, design: design))
+                                curriculum.append(Curriculum(year: year, semester: 1, type: type, code: code, name: name, point: point, necessary: necessary, design: design))
                             }
                             else{
-                               curriculum.append(Curriculum(year: year, semester: 2, type: type, code: code, name: name, grades: grade, necessary: necessary, design: design))
+                                curriculum.append(Curriculum(year: year, semester: 2, type: type, code: code, name: name, point: point, necessary: necessary, design: design))
                             }
                             necessary = false
                             design = false
@@ -273,7 +275,7 @@ class Crawler
                         }
                         index += 1
                     }
-                   // print("====================")
+                    // print("====================")
                 }
             }catch let error{
                 print("error : \(error)")
@@ -288,11 +290,68 @@ class Crawler
         
     }
     
-    func grade_crawl()
-    {
+    //0 : 이수성적, 1:필수과목이수내역 2:설계과목이수내역
+    //쿠키 세션 태스크 같이 연결해서 써야되는거 같음 내일 ㄱ
+    func grade_crawl(category type : Int)
+    {	
+        //    print(Person_Info.sharedd.login_status)
+        //      print(Person_Info.shared.cookie)
+        var selector : String
+        switch(type)
+        {
+        case 0 :
+            selector = "fieldset#tab_FU > table > tbody > tr"
+            break
+        case 1 :
+            selector = "fieldset#essentTab > table > tbody > tr"
+            break
+        case 2 :
+            selector = "fieldset#designTab > table > tbody > tr"
+            break
+            
+        default:
+            selector = ""
+            break
+        }
+        //쿠키 세팅(로그인 성공해야 후에 되는데 이거 조건 달아야..겟지?)
+        // if(Person_Info.sharedInstance.login_status){
+        //   Person_Info.sharedInstance.setCookies()
+        // }
         
+        
+        //Person_Info.sharedInstance.setCookies()
+        //print(
+       // print("밖  \(Person_Info.shared.cookie)")
+       // self.login()
+        //self.setCookies()
+//        print("**********************")
+//        print(AF.session.configuration.httpCookieStorage?.cookies ?? "XXXXXXXXXXX")
+//        print("**********************")
+        AF.request("http://abeek.knu.ac.kr/Keess/kees/web/stue/stueStuRecEnq/list.action", method: .get).responseString{response in
+            switch response.result
+            {
+            case .success(let html) :
+                do{
+                    //let html = try response.result.get()
+                    var document : Document = Document.init("")
+                    document = try SwiftSoup.parse(html)
+                    let elements : Elements = try document.select(selector)
+                    for element in elements{
+                        print(try element.text())
+                    }
+                    
+                }catch{
+                    
+                }
+                break
+            case .failure(let error) :
+                print("error : \(error)")
+                break
+            }
+        }
     }
     
+    //추후 진행 예정 마일리지 내용 없어서 안에 구조를 모름 ㅎ
     func mileage_crawl()
     {
         

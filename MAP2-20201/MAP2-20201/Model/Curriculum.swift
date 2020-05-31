@@ -14,7 +14,7 @@ struct Curriculum
     var type : String
     var code : String
     var name : String
-    var grades : String
+    var point : String
     var necessary : Bool = false
     var design : Bool = false
 }
