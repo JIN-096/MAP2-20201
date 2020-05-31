@@ -44,11 +44,11 @@ class ScheduleCell : UITableViewCell{
         NSLayoutConstraint.activate([
         month_day.topAnchor.constraint(equalTo: self.topAnchor),
         month_day.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-        month_day.widthAnchor.constraint(equalToConstant: 50),
+        month_day.widthAnchor.constraint(equalToConstant: 100),
         month_day.heightAnchor.constraint(equalToConstant: 50),
         
         content.topAnchor.constraint(equalTo: self.topAnchor),
-        content.leadingAnchor.constraint(equalTo: content.trailingAnchor, constant: margin),
+        content.leadingAnchor.constraint(equalTo: month_day.trailingAnchor, constant: margin),
         content.trailingAnchor.constraint(equalTo: self.trailingAnchor),
         
         ])

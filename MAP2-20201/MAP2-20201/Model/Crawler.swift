@@ -164,8 +164,6 @@ class Crawler
     {
         var calendars = [Calendar]()
         var document : Document?
-        var day : String = ""
-        var content : String = ""
         let selector = "#calendar > dl"
         document = downloadHTML(input_URL: "http://knu.ac.kr/wbbs/wbbs/user/yearSchedule/index.action?menu_idx=43&schedule.search_year=2020") ?? nil
         if(document != nil)
@@ -182,19 +180,19 @@ class Crawler
                     
 //                    print(try element.select("dt").text())
                     
-//                    print("---------월 별 구분 ---------")
-                    //var schedules : [Schedule] = []
+                    print("---------월 별 구분 ---------")
+                    var schedules : [Schedule] = []
                     let fuck : Elements = try element.select(".list > ul > li")
                     for fucking in fuck{
                         let full_string = try fucking.text()
-                        day = String(full_string.prefix(8))
+                        let day = String(full_string.prefix(8))
                         let index = full_string.index(full_string.startIndex,offsetBy: 8)
-                        content = String(full_string.suffix(from: index))
-                        //schedules.append(Schedule(day: day, content: content))
+                        let content = String(full_string.suffix(from: index))
+                        schedules.append(Schedule(day: day, content: content))
                        // print("날짜 : " + day)
                         //print("내용 : " + content)
                     }
-                    calendars.append(Calendar(year: year, month: month, day: day, content: content))
+                    calendars.append(Calendar(year: year, month: month, schedules: schedules))
 //                    print("===================")
                 }
             }catch let error{

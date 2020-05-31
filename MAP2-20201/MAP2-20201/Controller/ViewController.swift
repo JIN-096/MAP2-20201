@@ -81,16 +81,17 @@ class ViewController: UIViewController {
         
         
 //
-//        //학사일정
-//        let calendars : [Calendar]? = Crawler.shared.academic_calendar_crawl()
-//        for data in calendars!{
+        //학사일정
+       // let calendars : [Calendar]? = Crawler.shared.academic_calendar_crawl()
+//        for data in calendars!
+//        {
 //            print("\(data.year) 년")
 //            print("\(data.month) 월")
-//            for input in data.schedules
-//            {
-//                print(input.day)
-//                print(input.content)
+//            for input in data.schedules{
+//                print("\(input.day)")
+//                print("\(input.content)")
 //            }
+//
 //             print("---------")
 //        }
         ////-==============교육과정 ㅓ예시===========================

@@ -13,30 +13,34 @@ class ScheduleController : UIViewController{
     
     var calendars : [Calendar]? = Crawler.shared.academic_calendar_crawl()
     
-    private let tableView : UITableView = {
-       let tableView = UITableView()
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.register(ScheduleCell.self, forCellReuseIdentifier: ScheduleCell.identifier)
-        return tableView
-    }()
+//    private let tableView : UITableView = {
+//       let tableView = UITableView()
+//        tableView.translatesAutoresizingMaskIntoConstraints = false
+//        tableView.register(ScheduleCell.self, forCellReuseIdentifier: ScheduleCell.identifier)
+//        return tableView
+//    }()
+    
+    @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configure()
-        addSubView()
-        autoLayout()
+//        addSubView()
+        //autoLayout()
     }
     
     private func configure()
     {
+        //tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.register(ScheduleCell.self, forCellReuseIdentifier: ScheduleCell.identifier)
         tableView.dataSource = self
-        tableView.rowHeight = 70
+        tableView.rowHeight = 40
     }
     
-    private func addSubView()
-    {
-        view.addSubview(tableView)
-    }
+//    private func addSubView()
+//    {
+//        view.addSubview(tableView)
+//    }
     
     private func autoLayout()
     {
@@ -52,16 +56,19 @@ class ScheduleController : UIViewController{
 
 extension ScheduleController: UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return calendars?.count ?? 0
+        return calendars?[3].schedules.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: ScheduleCell.identifier, for: indexPath) as! ScheduleCell
+       
         
-        cell.month_day.text = calendars?[indexPath.row].day ?? ""
-        cell.content.text = calendars?[indexPath.row].content ?? ""
+        cell.month_day.text = calendars?[3].schedules[indexPath.row].day ?? ""
+        cell.content.text = calendars?[3].schedules[indexPath.row].content ?? ""
+       
+       return cell
         
-        return cell
     }
     
    

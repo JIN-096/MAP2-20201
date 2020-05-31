@@ -38,7 +38,7 @@ class KnuNoticeCell : UITableViewCell{
     }
     
     private func autoLayout(){
-        let margin: CGFloat = 10
+        let margin: CGFloat = 30
         NSLayoutConstraint.activate([
         notice_num.topAnchor.constraint(equalTo: self.topAnchor),
         notice_num.leadingAnchor.constraint(equalTo: self.leadingAnchor),
