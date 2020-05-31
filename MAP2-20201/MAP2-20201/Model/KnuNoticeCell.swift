@@ -9,9 +9,9 @@
 import Foundation
 import UIKit
 
-class TableViewCell_1 : UITableViewCell{
+class KnuNoticeCell : UITableViewCell{
     
-    static let identifier = "TableViewCell_knu"
+    static let identifier = "KnuNoticeCell"
     
     let notice_num : UILabel = {
         let notice_num = UILabel()

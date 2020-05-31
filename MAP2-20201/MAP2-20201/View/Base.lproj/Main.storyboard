@@ -313,7 +313,7 @@
         <!--본관 공지사항-->
         <scene sceneID="uET-uj-e6g">
             <objects>
-                <viewController id="dle-kX-7rQ" customClass="TableViewController" customModule="MAP2_20201" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="dle-kX-7rQ" customClass="KnuNoticeController" customModule="MAP2_20201" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="LgI-gg-41l">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -341,7 +341,7 @@
         <!--학부 학사공지-->
         <scene sceneID="dqx-fb-8iF">
             <objects>
-                <viewController id="AxH-QV-t3S" sceneMemberID="viewController">
+                <viewController id="AxH-QV-t3S" customClass="ComputerMajorNoticeController" customModule="MAP2_20201" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="VFN-ys-jKm">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

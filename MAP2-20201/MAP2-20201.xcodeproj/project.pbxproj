@@ -19,8 +19,10 @@
 		7670BBEE244731E500BF28B5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7670BBED244731E500BF28B5 /* ViewController.swift */; };
 		7670BBF3244731E600BF28B5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7670BBF2244731E600BF28B5 /* Assets.xcassets */; };
 		7670BBF6244731E600BF28B5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7670BBF4244731E600BF28B5 /* LaunchScreen.storyboard */; };
-		CB66269C24597330003F6196 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB66269B24597330003F6196 /* TableViewController.swift */; };
-		CB66269E2459784E003F6196 /* TableViewCell_knu.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB66269D2459784E003F6196 /* TableViewCell_knu.swift */; };
+		CB66269C24597330003F6196 /* KnuNoticeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB66269B24597330003F6196 /* KnuNoticeController.swift */; };
+		CB66269E2459784E003F6196 /* KnuNoticeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB66269D2459784E003F6196 /* KnuNoticeCell.swift */; };
+		CBA1084024838FBB0043758A /* ComputerMajorNoticeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA1083F24838FBB0043758A /* ComputerMajorNoticeController.swift */; };
+		CBA10842248393FF0043758A /* ComputerMajorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA10841248393FF0043758A /* ComputerMajorCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,8 +42,10 @@
 		7670BBF5244731E600BF28B5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7670BBF7244731E600BF28B5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C4FC4F9EE1730B6003B991FA /* Pods-MAP2-20201.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MAP2-20201.release.xcconfig"; path = "Target Support Files/Pods-MAP2-20201/Pods-MAP2-20201.release.xcconfig"; sourceTree = "<group>"; };
-		CB66269B24597330003F6196 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
-		CB66269D2459784E003F6196 /* TableViewCell_knu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell_knu.swift; sourceTree = "<group>"; };
+		CB66269B24597330003F6196 /* KnuNoticeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnuNoticeController.swift; sourceTree = "<group>"; };
+		CB66269D2459784E003F6196 /* KnuNoticeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnuNoticeCell.swift; sourceTree = "<group>"; };
+		CBA1083F24838FBB0043758A /* ComputerMajorNoticeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComputerMajorNoticeController.swift; sourceTree = "<group>"; };
+		CBA10841248393FF0043758A /* ComputerMajorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComputerMajorCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,11 +104,13 @@
 		76F4C8A324476917001AB005 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				CB66269D2459784E003F6196 /* KnuNoticeCell.swift */,
 				093D77F42455823B00E50437 /* Crawler.swift */,
 				093D77FB2456FBF300E50437 /* Person_Info.swift */,
 				093D77FD24570D6900E50437 /* Notice.swift */,
 				093D77FF2457BB4400E50437 /* Curriculum.swift */,
 				093D78012457CB5100E50437 /* Calendar.swift */,
+				CBA10841248393FF0043758A /* ComputerMajorCell.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -122,8 +128,8 @@
 			isa = PBXGroup;
 			children = (
 				7670BBED244731E500BF28B5 /* ViewController.swift */,
-				CB66269B24597330003F6196 /* TableViewController.swift */,
-				CB66269D2459784E003F6196 /* TableViewCell_knu.swift */,
+				CB66269B24597330003F6196 /* KnuNoticeController.swift */,
+				CBA1083F24838FBB0043758A /* ComputerMajorNoticeController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -253,10 +259,12 @@
 			files = (
 				093D77F72455823B00E50437 /* Crawler.swift in Sources */,
 				7670BBEE244731E500BF28B5 /* ViewController.swift in Sources */,
+				CBA10842248393FF0043758A /* ComputerMajorCell.swift in Sources */,
 				093D77FE24570D6900E50437 /* Notice.swift in Sources */,
-				CB66269E2459784E003F6196 /* TableViewCell_knu.swift in Sources */,
-				CB66269C24597330003F6196 /* TableViewController.swift in Sources */,
+				CB66269E2459784E003F6196 /* KnuNoticeCell.swift in Sources */,
+				CB66269C24597330003F6196 /* KnuNoticeController.swift in Sources */,
 				093D78022457CB5100E50437 /* Calendar.swift in Sources */,
+				CBA1084024838FBB0043758A /* ComputerMajorNoticeController.swift in Sources */,
 				093D77FC2456FBF300E50437 /* Person_Info.swift in Sources */,
 				7670BBEA244731E500BF28B5 /* AppDelegate.swift in Sources */,
 				7670BBEC244731E500BF28B5 /* SceneDelegate.swift in Sources */,

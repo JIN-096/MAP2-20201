@@ -123,7 +123,7 @@ class Crawler
         return notices
     }
     
-    //computer.knu.ac.kr 학부공지
+    //computer.knu.ac.kr 학사공지
     func computer_major_notice_crawl(URL : String?) -> [Notice]?
     {
         var document : Document?

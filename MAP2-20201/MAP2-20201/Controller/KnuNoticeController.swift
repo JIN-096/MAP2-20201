@@ -9,14 +9,14 @@
 import Foundation
 import UIKit
 
-class TableViewController : UIViewController{
+class KnuNoticeController : UIViewController{
     
     var Notice_knu : [Notice]? = Crawler.shared.knu_notice_crawl(URL: nil)
     
     private let tableView : UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.register(TableViewCell_1.self, forCellReuseIdentifier: TableViewCell_1.identifier)
+        tableView.register(KnuNoticeCell.self, forCellReuseIdentifier: KnuNoticeCell.identifier)
         return tableView
     }()
     
@@ -52,13 +52,13 @@ class TableViewController : UIViewController{
     
 }
 
-extension TableViewController: UITableViewDataSource {
+extension KnuNoticeController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return Notice_knu?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: TableViewCell_1.identifier, for: indexPath) as! TableViewCell_1
+        let cell = tableView.dequeueReusableCell(withIdentifier: KnuNoticeCell.identifier, for: indexPath) as! KnuNoticeCell
         cell.notice_num.text = Notice_knu?[indexPath.row].num ?? ""
         cell.notice_title.text = Notice_knu?[indexPath.row].title ?? ""
         return cell
