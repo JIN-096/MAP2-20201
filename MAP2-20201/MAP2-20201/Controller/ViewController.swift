@@ -43,16 +43,16 @@ class ViewController: UIViewController {
         // 다음페이지 이런거 할때 어떻게 할지 고민중. 그래서 일단 파라미터 optional로 해둠.
         //기본 사용법은 밑과 같을 거 같음.
         
-        print("< knu.ac.kr 본관공지 >\n\n")
-        let main_notice : [Notice]? = Crawler.shared.knu_notice_crawl(URL: nil)
-        for data in main_notice!
-        {
-            print("번호 : " + data.num)
-            print("본관공지 : " + data.title)
-            
-        }
-        print("본관공지 end")
-        print("===============================")
+//        print("< knu.ac.kr 본관공지 >\n\n")
+//        let main_notice : [Notice]? = Crawler.shared.knu_notice_crawl(URL: nil)
+//        for data in main_notice!
+//        {
+//            print("번호 : " + data.num)
+//            print("본관공지 : " + data.title)
+//
+//        }
+//        print("본관공지 end")
+//        print("===============================")
         
         
         

@@ -24,6 +24,7 @@ class DepartmnetNoticeController : UIViewController{
         autoLayout()
         
     }
+    
     private func configure(){
         departmentTableView.translatesAutoresizingMaskIntoConstraints = false
         departmentTableView.register(TabelViewCellDepartment.self, forCellReuseIdentifier: TabelViewCellDepartment.identifier)
