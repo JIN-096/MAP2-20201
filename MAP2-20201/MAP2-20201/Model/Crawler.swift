@@ -90,11 +90,114 @@ class Crawler
         }
         return notices
     }
+   
     
+    //knu.ac.kr 본관 공지 크롤링 변경
+       func knu_notice_crawl(page : Int?) -> [Notice]?
+       {
+           var document : Document?
+           var url = "https://knu.ac.kr/wbbs/wbbs/bbs/btin/stdList.action?menu_idx=42"
+            let target_page : String  = "&btin.page=" + String(page ?? 1)
+                   url = url + target_page
+           document = downloadHTML(input_URL: url) ?? nil
+           if(document == nil){
+               return nil
+           }
+           var notices = [Notice]()
+           let selector = "tbody>tr"
+           do {
+               //여기서  element객체를 css selector를 통해 파싱해서 element에 넣어줌.
+               let elements: Elements = try document!.select(selector )
+               //transform it into a local object (Item)
+               for element in elements {
+                   let num = try element.select(".num").text();
+                   let title = try element.select("a").text()
+                   let ref : String =  try element.select("a").attr("href")
+                   let writer = try element.select(".writer").text()
+                   let date = try element.select(".date").text()
+                   let hit = try element.select(".hit").text()
+                   let file = try element.select(".file").text().elementsEqual("")
+                   notices.append(Notice(num: num,title: title,ref: ref,wrtier: writer,date: date,hit: hit,file: file))
+               }
+               
+           } catch let error {
+               print("Error: \(error)")
+           }
+           return notices
+       }
     //computer.knu.ac.kr 전체공지
     func computer_total_notice_crawl(URL : String?) -> [Notice]?
     {
         var document : Document?
+        let url = URL ?? "http://computer.knu.ac.kr/06_sub/02_sub.html"
+        document = downloadHTML(input_URL: url) ?? nil
+        if(document == nil){
+            return nil
+        }
+        var notices = [Notice]()
+        let selector = "tbody>tr"
+        do {
+            //여기서  element객체를 css selector를 통해 파싱해서 element에 넣어줌.
+            let elements: Elements = try document!.select(selector )
+            //transform it into a local object (Item)
+            for element in elements {
+                let num = try element.select(".bbs_num").text();
+                let title = try element.select("a").text()
+                let ref : String =  try element.select("a").attr("href")
+                let writer = try element.select(".bbs_writer").text()
+                let date = try element.select(".bbs_date").text()
+                let hit = try element.select(".bbs_hit").text()
+                let file = false
+                notices.append(Notice(num: num,title: title,ref: ref,wrtier: writer,date: date,hit: hit,file: file))
+            }
+
+        } catch let error {
+            print("Error: \(error)")
+        }
+        return notices
+    }
+    
+    //computer.knu.ac.kr 전체공지 변경
+    func computer_total_notice_crawl(page : Int?) -> [Notice]?
+       {
+           var document : Document?
+           var url = "http://computer.knu.ac.kr/06_sub/02_sub.html"
+            let target_page : String  = "?page=" + String(page ?? 1)
+            url = url + target_page
+        document = downloadHTML(input_URL: url) ?? nil
+           if(document == nil){
+               return nil
+           }
+           var notices = [Notice]()
+           let selector = "tbody>tr"
+           do {
+               //여기서  element객체를 css selector를 통해 파싱해서 element에 넣어줌.
+               let elements: Elements = try document!.select(selector )
+               //transform it into a local object (Item)
+               for element in elements {
+                   let num = try element.select(".bbs_num").text();
+                   let title = try element.select("a").text()
+                   let ref : String =  try element.select("a").attr("href")
+                   let writer = try element.select(".bbs_writer").text()
+                   let date = try element.select(".bbs_date").text()
+                   let hit = try element.select(".bbs_hit").text()
+                   let file = false
+                   notices.append(Notice(num: num,title: title,ref: ref,wrtier: writer,date: date,hit: hit,file: file))
+               }
+               
+           } catch let error {
+               print("Error: \(error)")
+           }
+           return notices
+       }
+    
+    
+    
+//    computer.knu.ac.kr 학사공지
+    func computer_major_notice_crawl(URL : String?) -> [Notice]?
+    {
+        var document : Document?
+    
         let url = URL ?? "http://computer.knu.ac.kr/06_sub/02_sub_2.html"
         document = downloadHTML(input_URL: url) ?? nil
         if(document == nil){
@@ -125,39 +228,41 @@ class Crawler
         return notices
     }
     
-    //computer.knu.ac.kr 학사공지
-    func computer_major_notice_crawl(URL : String?) -> [Notice]?
-    {
-        var document : Document?
-        let url = URL ?? "http://computer.knu.ac.kr/06_sub/02_sub_2.html"
-        document = downloadHTML(input_URL: url) ?? nil
-        if(document == nil){
-            return nil
-        }
-        var notices = [Notice]()
-        let selector = "tbody>tr"
-        do {
-            //여기서  element객체를 css selector를 통해 파싱해서 element에 넣어줌.
-            let elements: Elements = try document!.select(selector )
-            //transform it into a local object (Item)
-            for element in elements {
-                let num = try element.select(".bbs_num").text();
-                let title = try element.select("a").text()
-                let ref : String =  try element.select("a").attr("href")
-                let writer = try element.select(".bbs_writer").text()
-                let date = try element.select(".bbs_date").text()
-                let hit = try element.select(".bbs_hit").text()
-                let file = false
-                notices.append(Notice(num: num,title: title,ref: ref,wrtier: writer,date: date,hit: hit,file: file))
-                //   print("num = \(num)" , "title = \(title)" , "title_to = \(ref)" , "writer = \(writer)" ,"date = \(date)" ,"hit = \(hit)" , "file 유무 : \(file)",separator : "\n")
-                // print("========================================================")
-            }
-            
-        } catch let error {
-            print("Error: \(error)")
-        }
-        return notices
-    }
+    
+    //computer.knu.ac.kr 학사공지 변경
+       func computer_major_notice_crawl(page : Int?) -> [Notice]?
+       {
+           var document : Document?
+           let target_page : String  = "?page=" + String(page ?? 1)
+           var url = "http://computer.knu.ac.kr/06_sub/02_sub_2.html"
+           url = url + target_page
+           document = downloadHTML(input_URL: url) ?? nil
+           if(document == nil){
+               return nil
+           }
+           var notices = [Notice]()
+           let selector = "tbody>tr"
+           do {
+               //여기서  element객체를 css selector를 통해 파싱해서 element에 넣어줌.
+               let elements: Elements = try document!.select(selector )
+               //transform it into a local object (Item)
+               for element in elements {
+                   let num = try element.select(".bbs_num").text();
+                   let title = try element.select("a").text()
+                   let ref : String =  try element.select("a").attr("href")
+                   let writer = try element.select(".bbs_writer").text()
+                   let date = try element.select(".bbs_date").text()
+                   let hit = try element.select(".bbs_hit").text()
+                   let file = false
+                   notices.append(Notice(num: num,title: title,ref: ref,wrtier: writer,date: date,hit: hit,file: file))
+               }
+
+           } catch let error {
+               print("Error: \(error)")
+           }
+           return notices
+       }
+    
     
     //학사일정
     func academic_calendar_crawl() -> [Calendar]?

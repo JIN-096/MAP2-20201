@@ -13,8 +13,7 @@ struct Calendar
     typealias Item = (day : String, content : String)
     var year : Int
     var month : Int
-    var schedules : [Schedule] = []
-    
+    var schedules : [Schedule] = []    
 }
 struct Schedule
 {

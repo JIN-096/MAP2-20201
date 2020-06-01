@@ -37,6 +37,8 @@ public class Person_Info
 //        let PW = "wan2good!@"
         let ID = "gwh1108"
         let PW = "tkrk1357@"
+//          let ID = "shs960501"
+//          let PW = "song5961!"
         let parameter = [
             "user.usr_id" : ID,
             "user.passwd" : PW
@@ -111,7 +113,7 @@ public class Person_Info
                 AF.session.configuration.httpCookieStorage?.setCookie(cookie)
             }
             print(Person_Info.shared.login_status)
-         //   print(AF.session.configuration.httpCookieStorage?.cookies ?? "XX")
+            //print(AF.session.configuration.httpCookieStorage?.cookies ?? "XX")
            Crawler.shared.grade_crawl(category: 0)
         }
     }
