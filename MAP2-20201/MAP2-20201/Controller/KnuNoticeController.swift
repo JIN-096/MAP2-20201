@@ -26,22 +26,23 @@ class KnuNoticeController : UIViewController{
         addSubView()
         autoLayout()
       
-        Crawler.shared.grade_crawl(category: 0){ result in
-            switch result {
-            case .success(let grade) :
-                self.myGrade = grade
-                for data in self.myGrade!{
-                    print("\(data.code) \(data.open_department) \(data.name) \(data.type) \(data.grade_unit) \(data.semester) \(data.rating) \(data.retake)")
-                }
-                print("success")
-            break
-            case .failure(let error) :
-                print(error)
-            break
-            
-            }
-        
-        }
+//        Crawler.shared.grade_crawl(category: 0){ result in
+//            switch result {
+//            case .success(let grade) :
+//                self.myGrade = grade
+//                for data in self.myGrade!{
+//                    print("\(data.code) \(data.open_department) \(data.name) \(data.type) \(data.grade_unit) \(data.semester) \(data.rating) \(data.retake)")
+//                }
+//                print("success")
+//            break
+//            case .failure(let error) :
+//                print(error)
+//            break
+//
+//            }
+//
+//        }
+        Crawler.shared.time_table_crawl(semester: nil)
     }
     
     

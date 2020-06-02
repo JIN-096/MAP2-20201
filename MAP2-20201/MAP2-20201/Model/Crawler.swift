@@ -390,8 +390,70 @@ class Crawler
         return nil
     }
     
-    func time_table_crawl()
-    {
+    //수강한 전체 학기 받아 오기
+    func time_table_semester_crawl(){
+        let selector = "#search_set_cde > option"
+        AF.request("http://abeek.knu.ac.kr/Keess/kees/web/stun/stunLectInfoEnq/list.action", method: .get).responseString{response in
+            switch response.result
+            {
+            case .success(let html) :
+                do{
+                    var semesters = [String]()
+                    //let html = try response.result.get()
+                    var document : Document = Document.init("")
+                    document = try SwiftSoup.parse(html)
+                    let elements : Elements = try document.select(selector)
+                    for element in elements{
+                        semesters.append(try element.attr("value"))
+                        print(try element.attr("value"))
+                    }
+                    //completiontHandler(.success(myGrade))
+                }catch{
+                    //completiontHandler(.failure(error))
+                }
+                break
+            case .failure(let error) :
+                print("error : \(error)")
+              //  completiontHandler(.failure(error))
+                break
+            }
+        }
+    }
+    
+    //어떤 과목을 수강하고 있는지 받아와서 핸들러를 통해 수강하고있는 과목 정보를 전달.
+    //학기 및 수업 코드 분반 번호 받아오기.
+    func time_table_crawl(semester : String?){
+        let selector = ".left > a"
+        
+        let url : String = "http://abeek.knu.ac.kr/Keess/kees/web/stun/stunLectInfoEnq/list.action?lectInfo.open_yr_trm=" + String(semester ?? "")
+        AF.request(url, method: .get).responseString{response in
+            switch response.result
+            {
+            case .success(let html) :
+                do{
+                    var myCourse = [(String,String)]()
+                    //let html = try response.result.get()
+                    var document : Document = Document.init("")
+                    document = try SwiftSoup.parse(html)
+                    let elements : Elements = try document.select(selector)
+                    for element in elements{
+                        print(try element.attr("href"))
+                    }
+                    //completiontHandler(.success(myGrade))
+                }catch{
+                    //completiontHandler(.failure(error))
+                }
+                break
+            case .failure(let error) :
+                print("error : \(error)")
+              //  completiontHandler(.failure(error))
+                break
+            }
+        }
+    }
+    
+    //수강정보를 받아와서 강의계획서에서 시간표를 만들기위한 데이터로 처리하는 과정.
+    func time_table_data_crawl(){
         
     }
     
