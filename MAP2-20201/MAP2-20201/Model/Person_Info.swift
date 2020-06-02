@@ -114,7 +114,7 @@ public class Person_Info
             }
             print(Person_Info.shared.login_status)
             //print(AF.session.configuration.httpCookieStorage?.cookies ?? "XX")
-           Crawler.shared.grade_crawl(category: 0)
+          // Crawler.shared.grade_crawl(category: 0)
         }
     }
     

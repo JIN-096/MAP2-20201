@@ -119,7 +119,7 @@ class ViewController: UIViewController {
         Person_Info.shared.login()
 //        Person_Info.shared.setCookies(cookies: )
 //
-       // Crawler.shared.grade_crawl(category: 0)
+      //  Crawler.shared.grade_crawl(category: 0)
         //Person_Info.shared.setCookies(cookies: Person_Info.shared.cookie)
         // Do any additional setup after loading the view.
     }

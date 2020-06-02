@@ -19,5 +19,5 @@ struct Grade
     let grade_unit : Int  //학점
     let semester : String
     let rating : String
-    let retake : Bool = false
+    let retake : Bool 
 }

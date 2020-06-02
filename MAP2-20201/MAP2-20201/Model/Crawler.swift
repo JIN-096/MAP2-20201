@@ -397,7 +397,7 @@ class Crawler
     
     //0 : 이수성적, 1:필수과목이수내역 2:설계과목이수내역
     //쿠키 세션 태스크 같이 연결해서 써야되는거 같음 내일 ㄱ
-    func grade_crawl(category type : Int)
+    func grade_crawl(category type : Int, completiontHandler: @escaping (Result<[Grade],Error>) -> Void)
     {	
         //    print(Person_Info.sharedd.login_status)
         //      print(Person_Info.shared.cookie)
@@ -437,24 +437,33 @@ class Crawler
             {
             case .success(let html) :
                 do{
+                    var myGrade = [Grade]()
                     //let html = try response.result.get()
                     var document : Document = Document.init("")
                     document = try SwiftSoup.parse(html)
                     let elements : Elements = try document.select(selector)
                     for element in elements{
-                        print(try element.text())
+                        //print(try element.text())
+                        let attr = try element.text().components(separatedBy: " ")
+                        var recourse = false
+                        if(attr.endIndex == 7 ){
+                            recourse = true
+                        }
+                        myGrade.append(Grade(code: attr[0], open_department: attr[1], name: attr[2], type: attr[3], grade_unit: Int(attr[4]) ?? 0 , semester: attr[5], rating: attr[6], retake: recourse))
                     }
-                    
+                    completiontHandler(.success(myGrade))
                 }catch{
-                    
+                    completiontHandler(.failure(error))
                 }
                 break
             case .failure(let error) :
                 print("error : \(error)")
+                completiontHandler(.failure(error))
                 break
             }
         }
     }
+    
     
     //추후 진행 예정 마일리지 내용 없어서 안에 구조를 모름 ㅎ
     func mileage_crawl()

@@ -12,7 +12,7 @@ import UIKit
 class KnuNoticeController : UIViewController{
     
     var Notice_knu : [Notice]? = Crawler.shared.knu_notice_crawl(URL: nil)
-    
+    var myGrade : [Grade]?
     private let tableView : UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -25,7 +25,26 @@ class KnuNoticeController : UIViewController{
         configure()
         addSubView()
         autoLayout()
+      
+        Crawler.shared.grade_crawl(category: 0){ result in
+            switch result {
+            case .success(let grade) :
+                self.myGrade = grade
+                for data in self.myGrade!{
+                    print("\(data.code) \(data.open_department) \(data.name) \(data.type) \(data.grade_unit) \(data.semester) \(data.rating) \(data.retake)")
+                }
+                print("success")
+            break
+            case .failure(let error) :
+                print(error)
+            break
+            
+            }
+        
+        }
     }
+    
+    
     
     
     
@@ -64,3 +83,4 @@ extension KnuNoticeController: UITableViewDataSource {
         return cell
     }
 }
+
