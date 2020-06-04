@@ -13,6 +13,12 @@
 		093D78002457BB4400E50437 /* Curriculum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093D77FF2457BB4400E50437 /* Curriculum.swift */; };
 		093D78022457CB5100E50437 /* Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093D78012457CB5100E50437 /* Calendar.swift */; };
 		093D780424581E0E00E50437 /* Grade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093D780324581E0E00E50437 /* Grade.swift */; };
+		0C9068E924887BFD00C7DD8A /* gradeimage.png in Resources */ = {isa = PBXBuildFile; fileRef = 0C9068E824887BFD00C7DD8A /* gradeimage.png */; };
+		0C9068ED24887F9700C7DD8A /* planimage2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0C9068EC24887F9700C7DD8A /* planimage2.jpg */; };
+		0C9068EF2488834000C7DD8A /* gradeimage2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0C9068EE2488834000C7DD8A /* gradeimage2.jpg */; };
+		0C9068F12488A1BF00C7DD8A /* knucsepuzzle.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0C9068F02488A1BF00C7DD8A /* knucsepuzzle.jpg */; };
+		0C9068F62488D2BD00C7DD8A /* splash.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0C9068F52488D2BD00C7DD8A /* splash.jpg */; };
+		0C9242F32488DFAF0003C063 /* splashimg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0C9242F22488DFAF0003C063 /* splashimg.jpg */; };
 		0CD70DB824557C2E00E673A4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0CD70DB624557C2E00E673A4 /* Main.storyboard */; };
 		3C6AA7CD7F49C15B68A30814 /* Pods_MAP2_20201.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57EE6CF08F673ED04457F45F /* Pods_MAP2_20201.framework */; };
 		7648BA9D24838EDC009F4CE1 /* TableViewCellDepartment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7648BA9C24838EDC009F4CE1 /* TableViewCellDepartment.swift */; };
@@ -35,6 +41,12 @@
 		093D77FF2457BB4400E50437 /* Curriculum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Curriculum.swift; sourceTree = "<group>"; };
 		093D78012457CB5100E50437 /* Calendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calendar.swift; sourceTree = "<group>"; };
 		093D780324581E0E00E50437 /* Grade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grade.swift; sourceTree = "<group>"; };
+		0C9068E824887BFD00C7DD8A /* gradeimage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gradeimage.png; sourceTree = "<group>"; };
+		0C9068EC24887F9700C7DD8A /* planimage2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = planimage2.jpg; sourceTree = "<group>"; };
+		0C9068EE2488834000C7DD8A /* gradeimage2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = gradeimage2.jpg; sourceTree = "<group>"; };
+		0C9068F02488A1BF00C7DD8A /* knucsepuzzle.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = knucsepuzzle.jpg; sourceTree = "<group>"; };
+		0C9068F52488D2BD00C7DD8A /* splash.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = splash.jpg; sourceTree = "<group>"; };
+		0C9242F22488DFAF0003C063 /* splashimg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = splashimg.jpg; sourceTree = "<group>"; };
 		0CD70DB724557C2E00E673A4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		11B0844BC99428C1C8B20928 /* Pods-MAP2-20201.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MAP2-20201.debug.xcconfig"; path = "Target Support Files/Pods-MAP2-20201/Pods-MAP2-20201.debug.xcconfig"; sourceTree = "<group>"; };
 		57EE6CF08F673ED04457F45F /* Pods_MAP2_20201.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MAP2_20201.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -126,8 +138,13 @@
 		76F4C8A424476948001AB005 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				0C9242F22488DFAF0003C063 /* splashimg.jpg */,
 				7670BBF4244731E600BF28B5 /* LaunchScreen.storyboard */,
 				0CD70DB624557C2E00E673A4 /* Main.storyboard */,
+				0C9068EE2488834000C7DD8A /* gradeimage2.jpg */,
+				0C9068E824887BFD00C7DD8A /* gradeimage.png */,
+				0C9068EC24887F9700C7DD8A /* planimage2.jpg */,
+				0C9068F02488A1BF00C7DD8A /* knucsepuzzle.jpg */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -135,6 +152,7 @@
 		76F4C8A524476951001AB005 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				0C9068F52488D2BD00C7DD8A /* splash.jpg */,
 				7670BBED244731E500BF28B5 /* ViewController.swift */,
 				CB66269B24597330003F6196 /* KnuNoticeController.swift */,
 				CBA1083F24838FBB0043758A /* ComputerMajorNoticeController.swift */,
@@ -211,9 +229,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0C9068EF2488834000C7DD8A /* gradeimage2.jpg in Resources */,
+				0C9068ED24887F9700C7DD8A /* planimage2.jpg in Resources */,
 				0CD70DB824557C2E00E673A4 /* Main.storyboard in Resources */,
+				0C9068F62488D2BD00C7DD8A /* splash.jpg in Resources */,
+				0C9242F32488DFAF0003C063 /* splashimg.jpg in Resources */,
+				0C9068F12488A1BF00C7DD8A /* knucsepuzzle.jpg in Resources */,
 				7670BBF6244731E600BF28B5 /* LaunchScreen.storyboard in Resources */,
 				7670BBF3244731E600BF28B5 /* Assets.xcassets in Resources */,
+				0C9068E924887BFD00C7DD8A /* gradeimage.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
