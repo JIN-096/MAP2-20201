@@ -434,17 +434,32 @@
                                 <items>
                                     <navigationItem id="zLN-oR-cwp">
                                         <leftBarButtonItems>
-                                            <barButtonItem title="←" id="VLk-KL-drY" userLabel="item"/>
-                                            <barButtonItem title="→" id="Sru-Gy-tiN"/>
+                                            <barButtonItem title="←" id="VLk-KL-drY" userLabel="item">
+                                                <connections>
+                                                    <action selector="Before_month:" destination="vpk-yY-Ixt" id="CKE-6A-wDd"/>
+                                                </connections>
+                                            </barButtonItem>
+                                            <barButtonItem title="→" id="Sru-Gy-tiN">
+                                                <connections>
+                                                    <action selector="Next_month:" destination="vpk-yY-Ixt" id="vW6-sy-0h8"/>
+                                                </connections>
+                                            </barButtonItem>
                                         </leftBarButtonItems>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="2020.04" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zRO-Wa-qqr">
-                                <rect key="frame" x="304" y="95" width="94" height="29"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u9O-hO-L3g">
+                                <rect key="frame" x="278" y="98" width="64" height="24"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                <color key="textColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qu6-rw-NPh">
+                                <rect key="frame" x="350" y="98" width="44" height="24"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -453,6 +468,8 @@
                     </view>
                     <navigationItem key="navigationItem" title="학사일정" id="3sM-pt-vRg"/>
                     <connections>
+                        <outlet property="Show_Month" destination="qu6-rw-NPh" id="WU8-IX-2KZ"/>
+                        <outlet property="Show_Year" destination="u9O-hO-L3g" id="7qh-en-T9x"/>
                         <outlet property="tableView" destination="BE1-N7-Mz4" id="dE1-C6-pEa"/>
                     </connections>
                 </viewController>
