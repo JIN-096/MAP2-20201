@@ -25,12 +25,16 @@ class ComputerMajorNoticeController : UIViewController{
         configure()
         addSubView()
         autoLayout()
+        tableView.tableFooterView = UIView()
+        
+
     }
     
     private func configure()
     {
         tableView.dataSource = self
-        tableView.rowHeight = 70
+        tableView.estimatedRowHeight = 50
+        tableView.rowHeight = UITableView.automaticDimension
     }
     
     private func addSubView(){

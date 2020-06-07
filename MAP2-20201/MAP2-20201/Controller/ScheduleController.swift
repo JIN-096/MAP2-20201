@@ -51,29 +51,30 @@ class ScheduleController : UIViewController{
     }
     
     override func viewDidLoad() {
-            super.viewDidLoad()
-            configure()
+        super.viewDidLoad()
+        configure()
         Show_Year.text="2020년"
         Show_Month.text="1월"
+        Show_Year.textColor = #colorLiteral(red: 0.03921568627, green: 0.5176470588, blue: 1, alpha: 1)
+        Show_Month.textColor = #colorLiteral(red: 0.03921568627, green: 0.5176470588, blue: 1, alpha: 1)
+        tableView.tableFooterView = UIView() // 밑에 구분선 안나오게
     //        addSubView()
             //autoLayout()
-        }
+    }
     private func configure()
     {
         tableView.translatesAutoresizingMaskIntoConstraints = false
+        
+        //앞에 구분선 잘리는거 없애기
+        tableView.cellLayoutMarginsFollowReadableWidth = false
+        tableView.separatorInset.left = 0
+        
         tableView.register(ScheduleCell.self, forCellReuseIdentifier: ScheduleCell.identifier)
         tableView.dataSource = self
-        tableView.rowHeight = 40
+        tableView.estimatedRowHeight = 50
+        tableView.rowHeight = UITableView.automaticDimension
     }
     
-//    private func addSubView()
-//    {
-//        view.addSubview(tableView)
-//    }
-    
-   
-    
-   
     
     private func autoLayout()
     {
@@ -99,13 +100,13 @@ extension ScheduleController: UITableViewDataSource{
        
         
         cell.month_day.text = calendars?[month-1].schedules[indexPath.row].day ?? ""
-        cell.content.text = calendars?[month-1].schedules[indexPath.row].content ?? ""
-       
+        cell.content.text = calendars?[month-1].schedules[indexPath.row].content ?? "g"
+        cell.separatorInset = UIEdgeInsets.zero
+        
+    
        return cell
         
     }
-    
-   
-    
+
    
 }
