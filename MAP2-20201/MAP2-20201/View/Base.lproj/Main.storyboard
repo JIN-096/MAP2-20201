@@ -150,6 +150,7 @@
         <!--Timetable-->
         <scene sceneID="LWE-QC-WRb">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HI4-UI-Hxm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <collectionViewController id="qCN-Ui-d4W" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="sv5-ad-eiR">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -181,7 +182,6 @@
                         <color key="badgeColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBarItem>
                 </collectionViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="HI4-UI-Hxm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="92.753623188405811" y="401.78571428571428"/>
         </scene>
@@ -310,6 +310,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="스크린샷 2020-06-07 오후 3.00.18.png" translatesAutoresizingMaskIntoConstraints="NO" id="ymu-GZ-Df8">
+                                <rect key="frame" x="89" y="247" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xp9-Mb-Adf">
                                 <rect key="frame" x="99" y="458" width="0.0" height="0.0"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -378,13 +382,6 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="학사통합정보 계정을 입력해주세요." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Pu-mM-VGN">
-                                <rect key="frame" x="92" y="601" width="235" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="비밀번호" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jDW-cs-fTp">
                                 <rect key="frame" x="70" y="516" width="59" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -392,10 +389,13 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="스크린샷 2020-06-07 오후 3.00.18.png" translatesAutoresizingMaskIntoConstraints="NO" id="ymu-GZ-Df8">
-                                <rect key="frame" x="89" y="247" width="240" height="128"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="swedu.knu.ac.kr 계정을 입력해주세요." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Pu-mM-VGN">
+                                <rect key="frame" x="77" y="601" width="271" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="deZ-Rh-uGX"/>
@@ -436,71 +436,45 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0cx-j6-vyZ">
-                                <rect key="frame" x="235" y="374" width="170" height="62"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="tintColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="Button" image="그림1.png">
-                                    <color key="titleColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <state key="highlighted" image="greaterthan" catalog="system"/>
-                                <connections>
-                                    <segue destination="LVV-dT-9cA" kind="show" id="NqR-H8-U9h"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ea4-dO-uDW">
-                                <rect key="frame" x="211" y="694" width="168" height="60"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="testt.png"/>
-                                <state key="highlighted" image="greaterthan" catalog="system"/>
-                                <connections>
-                                    <segue destination="Imy-pF-py9" kind="show" id="14R-kV-A4b"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="htP-Uq-2fE">
-                                <rect key="frame" x="35" y="694" width="168" height="60"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="tintColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" image="testt.png"/>
-                                <state key="highlighted" image="greaterthan" catalog="system"/>
-                                <connections>
-                                    <segue destination="AxH-QV-t3S" kind="show" id="gke-wz-Vfz"/>
-                                </connections>
-                            </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="cse.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="XKf-l7-4Uk">
                                 <rect key="frame" x="42" y="88" width="330" height="329"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AiH-DB-sDz">
-                                <rect key="frame" x="35" y="374" width="168" height="60"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Nv-n1-Cun">
+                                <rect key="frame" x="38" y="373" width="165" height="60"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="testt.png">
-                                    <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
-                                </state>
-                                <state key="highlighted" image="greaterthan" catalog="system"/>
+                                <state key="normal" title="Button" image="testt.png"/>
                                 <connections>
-                                    <segue destination="dle-kX-7rQ" kind="show" id="9l2-ck-N4X"/>
+                                    <segue destination="LVV-dT-9cA" kind="push" id="EZd-2S-gNq"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2qJ-tq-3cu">
+                                <rect key="frame" x="211" y="375" width="168" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button" image="1111.png"/>
+                                <connections>
+                                    <segue destination="AxH-QV-t3S" kind="push" id="VVg-sz-fia"/>
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="스크린샷 2020-06-07 오후 3.28.54.png" translatesAutoresizingMaskIntoConstraints="NO" id="IBK-4K-2cs">
-                                <rect key="frame" x="35" y="425" width="344" height="329"/>
+                                <rect key="frame" x="35" y="395" width="344" height="329"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yCI-i6-mcm">
-                                <rect key="frame" x="148" y="88" width="217" height="62"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5tg-Lf-UXW">
+                                <rect key="frame" x="35" y="664" width="168" height="55"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <inset key="contentEdgeInsets" minX="62" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                <state key="normal" title="Button" image="그림1.png">
-                                    <color key="titleColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
+                                <state key="normal" title="Button" image="3333.png"/>
                                 <connections>
-                                    <segue destination="dle-kX-7rQ" kind="show" id="QNJ-kW-mtK"/>
+                                    <segue destination="dle-kX-7rQ" kind="push" id="96w-VS-kTa"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Nv-n1-Cun">
-                                <rect key="frame" x="35" y="88" width="168" height="60"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cYe-D3-iPB">
+                                <rect key="frame" x="211" y="664" width="171" height="57"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button" image="testt.png"/>
+                                <state key="normal" title="Button" image="2222.png"/>
+                                <connections>
+                                    <segue destination="Imy-pF-py9" kind="push" id="jvP-YA-QBv"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -625,22 +599,20 @@
         </scene>
     </scenes>
     <resources>
+        <image name="1111.png" width="361.92001342773438" height="86.879997253417969"/>
+        <image name="2222.png" width="349" height="85.919998168945312"/>
+        <image name="3333.png" width="349" height="85.919998168945312"/>
         <image name="book" catalog="system" width="64" height="50"/>
         <image name="cart" catalog="system" width="64" height="50"/>
         <image name="clock" catalog="system" width="64" height="60"/>
         <image name="cse.jpg" width="591.4285888671875" height="418"/>
         <image name="gradeimage2.jpg" width="374" height="353"/>
-        <image name="greaterthan" catalog="system" width="64" height="54"/>
         <image name="house" catalog="system" width="64" height="54"/>
         <image name="knucsepuzzle.jpg" width="848" height="141"/>
         <image name="planimage2.jpg" width="374" height="353"/>
         <image name="testt.png" width="349" height="80.639999389648438"/>
-        <image name="그림1.png" width="361.92001342773438" height="86.879997253417969"/>
         <image name="스크린샷 2020-06-07 오후 3.00.18.png" width="336" height="116"/>
         <image name="스크린샷 2020-06-07 오후 3.28.54.png" width="677" height="381"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="QNJ-kW-mtK"/>
-    </inferredMetricsTieBreakers>
     <color key="tintColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>
