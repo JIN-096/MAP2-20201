@@ -391,7 +391,7 @@ class Crawler
     }
     
     //수강한 전체 학기 받아 오기
-    func time_table_semester_crawl(){
+    func time_table_semester_crawl(completiontHandler: @escaping (Result<[String],Error>) -> Void){
         let selector = "#search_set_cde > option"
         AF.request("http://abeek.knu.ac.kr/Keess/kees/web/stun/stunLectInfoEnq/list.action", method: .get).responseString{response in
             switch response.result
@@ -405,16 +405,16 @@ class Crawler
                     let elements : Elements = try document.select(selector)
                     for element in elements{
                         semesters.append(try element.attr("value"))
-                        print(try element.attr("value"))
+                        //print(try element.attr("value"))
                     }
-                    //completiontHandler(.success(myGrade))
+                    completiontHandler(.success(semesters))
                 }catch{
-                    //completiontHandler(.failure(error))
+                    completiontHandler(.failure(error))
                 }
                 break
             case .failure(let error) :
                 print("error : \(error)")
-              //  completiontHandler(.failure(error))
+               completiontHandler(.failure(error))
                 break
             }
         }
@@ -422,7 +422,7 @@ class Crawler
     
     //어떤 과목을 수강하고 있는지 받아와서 핸들러를 통해 수강하고있는 과목 정보를 전달.
     //학기 및 수업 코드 분반 번호 받아오기.
-    func time_table_crawl(semester : String?){
+    func time_table_crawl(semester : String?, completiontHandler: @escaping (Result<[(String,String)],Error>) -> Void){
         let selector = ".left > a"
         
         let url : String = "http://abeek.knu.ac.kr/Keess/kees/web/stun/stunLectInfoEnq/list.action?lectInfo.open_yr_trm=" + String(semester ?? "")
@@ -431,30 +431,55 @@ class Crawler
             {
             case .success(let html) :
                 do{
-                    var myCourse = [(String,String)]()
+                    var myCourse = [(Code : String,sub : String)]()
                     //let html = try response.result.get()
                     var document : Document = Document.init("")
                     document = try SwiftSoup.parse(html)
                     let elements : Elements = try document.select(selector)
                     for element in elements{
-                        print(try element.attr("href"))
+                        //print(try element.attr("href"))
+                        let attr = try element.attr("href").getArrayAfterRegex(regex: "(?<=')[a-zA-Z0-9]*(?=')")
+                        myCourse.append((attr[0], attr[1]))
                     }
-                    //completiontHandler(.success(myGrade))
+                    completiontHandler(.success(myCourse))
                 }catch{
-                    //completiontHandler(.failure(error))
+                    completiontHandler(.failure(error))
                 }
                 break
             case .failure(let error) :
                 print("error : \(error)")
-              //  completiontHandler(.failure(error))
+                completiontHandler(.failure(error))
                 break
             }
         }
     }
     
+    //http://my.knu.ac.kr/stpo/stpo/cour/plans/viewPlanDetailNew.action?plans.searchOpenYrTrm=%2720191%27&plans.searchSubjCde=%27CLTR211%27&plans.searchSubClassCde=%27037%27
     //수강정보를 받아와서 강의계획서에서 시간표를 만들기위한 데이터로 처리하는 과정.
-    func time_table_data_crawl(){
-        
+    func time_table_data_crawl(semester : String, Codes : [(Code : String, sub : String)]){
+        let sub_url1 : String = "?plans.searchOpenYrTrm='" + semester + "''"
+        for data in Codes{
+            let sub_url2 : String = "&plans.searchSubjCde='" + data.Code + "'&plans.searchSubClassCde='" + data.sub + "'"
+            let url = "http://my.knu.ac.kr/stpo/stpo/cour/plans/viewPlanDetailNew.action" + sub_url1 + sub_url2
+            var document : Document?
+            document = downloadHTML(input_URL: url) ?? nil
+                    if(document == nil){
+                        print("url strange!")
+                        return
+                    }
+                    let selector = "#form1>tbody>tr>td"
+                    do {
+                        //여기서  element객체를 css selector를 통해 파싱해서 element에 넣어줌.
+                        let elements: Elements = try document!.select(selector)
+                        //transform it into a local object (Item)
+                        for element in elements {
+                            print(try element.text())
+                        }
+
+                    } catch let error {
+                        print("Error: \(error)")
+                    }
+        }
     }
     
     //0 : 이수성적, 1:필수과목이수내역 2:설계과목이수내역
@@ -505,13 +530,14 @@ class Crawler
                     document = try SwiftSoup.parse(html)
                     let elements : Elements = try document.select(selector)
                     for element in elements{
-                        //print(try element.text())
+                        print(try element.text())
                         let attr = try element.text().components(separatedBy: " ")
                         var recourse = false
                         if(attr.endIndex == 7 ){
                             recourse = true
                         }
-                        myGrade.append(Grade(code: attr[0], open_department: attr[1], name: attr[2], type: attr[3], grade_unit: Int(attr[4]) ?? 0 , semester: attr[5], rating: attr[6], retake: recourse))
+                
+//                        myGrade.append(Grade(code: attr[0], open_department: attr[1], name: attr[2], type: attr[3], grade_unit: Int(attr[4]) ?? 0 , semester: attr[5], rating: attr[6], retake: recourse))
                     }
                     completiontHandler(.success(myGrade))
                 }catch{
@@ -533,3 +559,25 @@ class Crawler
         
     }
 }
+
+
+//정규식 사용을 위한 extension
+//사용법은 다음과 같음
+// let str =""
+//str.getArrayAfterRegex(regexp) -> String 배열로 반환.
+extension String{
+    func getArrayAfterRegex(regex : String) -> [String] {
+        do{
+            let regex = try NSRegularExpression(pattern : regex)
+            let results = regex.matches(in: self,  range: NSRange(self.startIndex..., in: self))
+            return results.map{
+                String(self[Range($0.range, in: self)!])
+            }
+        }catch let error{
+            print("invalid regex : \(error.localizedDescription)")
+            return []
+        }
+        
+    }
+}
+
