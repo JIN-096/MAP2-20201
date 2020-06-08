@@ -14,7 +14,7 @@ class KnuNoticeController : UIViewController{
     var Notice_knu : [Notice]? = Crawler.shared.knu_notice_crawl(URL: nil)
     var myGrade : [Grade]?
     var timeTable : [Timetable]?
-    var semesters : [String]?
+  //  var semesters : [String]?
     var myCourses : [(Code : String, sub : String)]?
     
     private let tableView : UITableView = {
@@ -34,18 +34,16 @@ class KnuNoticeController : UIViewController{
 //            switch result {
 //            case .success(let grade) :
 //                self.myGrade = grade
-////                for data in self.myGrade!{
-////                    print("\(data.code) \(data.open_department) \(data.name) \(data.type) \(data.grade_unit) \(data.semester) \(data.rating) \(data.retake)")
-////                }
+//                for data in self.myGrade!{
+//                    print("\(data.code) \(data.open_department) \(data.name) \(data.type) \(data.grade_unit) \(data.semester) \(data.rating) \(data.retake)")
+//                }
 //                print("success")
-//            break
+//                break
 //            case .failure(let error) :
 //                print(error)
-//            break
-//
+//                break
 //            }
-
-     //   }
+//        }
         //학기 받아오기
 //        Crawler.shared.time_table_semester_crawl{ result in
 //            switch result{
@@ -61,30 +59,30 @@ class KnuNoticeController : UIViewController{
 //            }
 //        }
       //  수강하고 있는 정보 가져오기
-        Crawler.shared.time_table_crawl(semester: nil){ result in
-            switch result{
-
-            case .success(let mycourse):
-                self.myCourses = mycourse
-                for data in self.myCourses!{
-                    print(data.Code, data.sub)
-                }
-                self.timeTable = Crawler.shared.time_table_data_crawl(semester: "20201", Codes: self.myCourses!)
-                if self.timeTable != nil{
-                    for course in self.timeTable!{
-                        print(course.courseName)
-                        for time in course.courseTimes{
-                            print(time.courseDay, terminator: " ")
-                            print(time.startTime, terminator: " ")
-                            print(time.endTime)
-                        }
-                        print("-----------------------------")
-                    }
-                }
-            case .failure(let error):
-                print(error)
-            }
-        }
+//        Crawler.shared.time_table_crawl(semester: nil){ result in
+//            switch result{
+//
+//            case .success(let mycourse):
+//                self.myCourses = mycourse
+//                for data in self.myCourses!{
+//                    print(data.Code, data.sub)
+//                }
+//                self.timeTable = Crawler.shared.time_table_data_crawl(semester: "20201", Codes: self.myCourses!)
+//                if self.timeTable != nil{
+//                    for course in self.timeTable!{
+//                        print(course.courseName)
+//                        for time in course.courseTimes{
+//                            print(time.courseDay, terminator: " ")
+//                            print(time.startTime, terminator: " ")
+//                            print(time.endTime)
+//                        }
+//                        print("-----------------------------")
+//                    }
+//                }
+//            case .failure(let error):
+//                print(error)
+//            }
+//        }
         
     }
     

@@ -308,6 +308,49 @@ class Crawler
         return nil
     }
     
+    //학사일정 변경 year 따라 받을 수있도록 변경
+    func academic_calendar_crawl(year : Int) -> [Calendar]?
+    {
+        var calendars = [Calendar]()
+        var document : Document?
+        let selector = "#calendar > dl"
+        document = downloadHTML(input_URL: "http://knu.ac.kr/wbbs/wbbs/user/yearSchedule/index.action?menu_idx=43&schedule.search_year=" + String(year)) ?? nil
+        if(document != nil)
+        {
+            do{
+                let elements : Elements = try document!.select(selector)
+                for element in elements{
+                    print("==========================")
+                    let full_date = try element.select("dt").text()
+                    let year = Int(full_date.prefix(4))!
+                    let start_index = full_date.index(full_date.startIndex,offsetBy: 5)
+                    let end_index = full_date.index(full_date.startIndex, offsetBy: 6)
+                    let month = Int(full_date[start_index...end_index]) ?? 0
+                    
+                    print(try element.select("dt").text())
+                    
+                    print("---------월 별 구분 ---------")
+                    var schedules : [Schedule] = []
+                    let fuck : Elements = try element.select(".list > ul > li")
+                    for fucking in fuck{
+                        let full_string = try fucking.text()
+                        let day = String(full_string.prefix(8))
+                        let index = full_string.index(full_string.startIndex,offsetBy: 8)
+                        let content = String(full_string.suffix(from: index))
+                        schedules.append(Schedule(day: day, content: content))
+                        print("날짜 : " + day)
+                        print("내용 : " + content)
+                    }
+                    calendars.append(Calendar(year: year, month: month, schedules: schedules))
+                    print("===================")
+                }
+            }catch let error{
+                print("error : \(error)")
+            }
+            return calendars
+        }
+        return nil
+    }
     //교과과정(심컴기준 커리큘럼)
     func curriculum_crawl() -> [Curriculum]?
     {
@@ -499,7 +542,12 @@ class Crawler
                             let detailtime = String(time[index...]).getArrayAfterRegex(regex : "[0-9]{1,}[A|B]")
                             let start = detailtime[detailtime.startIndex]
                             let end = detailtime[detailtime.endIndex - 1]
-                            sub_coursetime.append(CourseTime(courseDay: day, startTime: start, endTime: end))
+                            let course_startTime = TimeFormatChange(unformatted_time: start, type: 0)
+                            let course_endTime = TimeFormatChange(unformatted_time: end, type: 1)
+                            print("get after start translate : \(course_startTime)")
+                            print("get after end translate : \(course_endTime)")
+                                
+                            sub_coursetime.append(CourseTime(courseDay: day, startTime: course_startTime, endTime: course_endTime))
                         }
                         break
                     case 8 :
@@ -569,16 +617,54 @@ class Crawler
                     var myGrade = [Grade]()
                     //let html = try response.result.get()
                     var document : Document = Document.init("")
+                    var sub_code = ""
+                    var sub_department = ""
+                    var sub_name = ""
+                    var sub_type = ""
+                    var sub_gradeunit = ""
+                    var sub_semester = ""
+                    var sub_rating = ""
+                    var recourse = false
                     document = try SwiftSoup.parse(html)
                     let elements : Elements = try document.select(selector)
                     for element in elements{
-                        print(try element.text())
-                        let attr = try element.text().components(separatedBy: " ")
-                        var recourse = false
-                        if(attr.endIndex == 7 ){
-                            recourse = true
+                        let subelement = try element.select("td")
+                        var check_index = 1
+                        recourse = false
+                        for sub in subelement{
+                            switch check_index {
+                            case 1:
+                                sub_code = try sub.text()
+                                break
+                            case 2 :
+                                sub_department = try sub.text()
+                                break
+                            case 3:
+                                sub_name = try sub.text()
+                                break
+                            case 4 :
+                                sub_type = try sub.text()
+                                break
+                            case 5 :
+                                sub_gradeunit = try sub.text()
+                                break
+                            case 6 :
+                                sub_semester = try sub.text()
+                                break
+                            case 7 :
+                                sub_rating = try sub.text()
+                            case 8 :
+                                recourse = true
+                                break
+                            default:
+                                break
+                            }
+                            check_index = check_index + 1
                         }
-                
+                        if sub_code != ""
+                        {
+                            myGrade.append(Grade(code: sub_code, open_department: sub_department, name: sub_name, type: sub_type, grade_unit: Int(sub_gradeunit) ?? 0, semester: sub_semester, rating: sub_rating, retake: recourse))
+                        }
 //                        myGrade.append(Grade(code: attr[0], open_department: attr[1], name: attr[2], type: attr[3], grade_unit: Int(attr[4]) ?? 0 , semester: attr[5], rating: attr[6], retake: recourse))
                     }
                     completiontHandler(.success(myGrade))
