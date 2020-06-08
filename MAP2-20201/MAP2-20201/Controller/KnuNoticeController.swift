@@ -13,6 +13,7 @@ class KnuNoticeController : UIViewController{
     
     var Notice_knu : [Notice]? = Crawler.shared.knu_notice_crawl(URL: nil)
     var myGrade : [Grade]?
+    var timeTable : [Timetable]?
     var semesters : [String]?
     var myCourses : [(Code : String, sub : String)]?
     
@@ -68,11 +69,23 @@ class KnuNoticeController : UIViewController{
                 for data in self.myCourses!{
                     print(data.Code, data.sub)
                 }
-                Crawler.shared.time_table_data_crawl(semester: "20201", Codes: self.myCourses!)
+                self.timeTable = Crawler.shared.time_table_data_crawl(semester: "20201", Codes: self.myCourses!)
+                if self.timeTable != nil{
+                    for course in self.timeTable!{
+                        print(course.courseName)
+                        for time in course.courseTimes{
+                            print(time.courseDay, terminator: " ")
+                            print(time.startTime, terminator: " ")
+                            print(time.endTime)
+                        }
+                        print("-----------------------------")
+                    }
+                }
             case .failure(let error):
                 print(error)
             }
         }
+        
     }
     
     private func configure()

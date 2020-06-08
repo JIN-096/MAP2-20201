@@ -456,30 +456,72 @@ class Crawler
     
     //http://my.knu.ac.kr/stpo/stpo/cour/plans/viewPlanDetailNew.action?plans.searchOpenYrTrm=%2720191%27&plans.searchSubjCde=%27CLTR211%27&plans.searchSubClassCde=%27037%27
     //수강정보를 받아와서 강의계획서에서 시간표를 만들기위한 데이터로 처리하는 과정.
-    func time_table_data_crawl(semester : String, Codes : [(Code : String, sub : String)]){
+    func time_table_data_crawl(semester : String, Codes : [(Code : String, sub : String)]) -> [Timetable]?{
         let sub_url1 : String = "?plans.searchOpenYrTrm='" + semester + "''"
+        var timeTables = [Timetable]()
         for data in Codes{
+            var checkindex = 0
+            var sub_course_name : String = ""
+            var sub_course_id : String = ""
+            var sub_professor : String = ""
+            var sub_room : String = ""
+            var sub_coursetime = [CourseTime]()
             let sub_url2 : String = "&plans.searchSubjCde='" + data.Code + "'&plans.searchSubClassCde='" + data.sub + "'"
             let url = "http://my.knu.ac.kr/stpo/stpo/cour/plans/viewPlanDetailNew.action" + sub_url1 + sub_url2
             var document : Document?
             document = downloadHTML(input_URL: url) ?? nil
-                    if(document == nil){
-                        print("url strange!")
-                        return
-                    }
-                    let selector = "#form1>tbody>tr>td"
-                    do {
-                        //여기서  element객체를 css selector를 통해 파싱해서 element에 넣어줌.
-                        let elements: Elements = try document!.select(selector)
-                        //transform it into a local object (Item)
-                        for element in elements {
-                            print(try element.text())
+            if(document == nil){
+                print("url strange!")
+                return nil
+            }
+            let selector = "#form1>tbody>tr>td"
+            do {
+                //여기서  element객체를 css selector를 통해 파싱해서 element에 넣어줌.
+                let elements: Elements = try document!.select(selector)
+                //transform it into a local object (Item)
+                for element in elements {
+                    switch checkindex {
+                    case 0:
+                        sub_course_name = try element.text()
+                        break
+                    case 1 :
+                        sub_course_id = try element.text()
+                        break
+                    case 6 :
+                        sub_professor = try element.text()
+                        break
+                    case 7 :
+                        
+                        let times = try element.text().components(separatedBy: " ")
+                        for time in times {
+                            let index = time.startIndex
+                            let day = String(time[...index])
+                            let detailtime = String(time[index...]).getArrayAfterRegex(regex : "[0-9]{1,}[A|B]")
+                            let start = detailtime[detailtime.startIndex]
+                            let end = detailtime[detailtime.endIndex - 1]
+                            sub_coursetime.append(CourseTime(courseDay: day, startTime: start, endTime: end))
                         }
-
-                    } catch let error {
-                        print("Error: \(error)")
+                        break
+                    case 8 :
+                        let rooms = try element.text().components(separatedBy: " ")
+                        sub_room = rooms[0]
+                        break
+                    default:
+                        break;
                     }
+                    checkindex = checkindex + 1
+                    //print(try element.text())
+                }
+                timeTables.append(Timetable(courseId: sub_course_id, courseName: sub_course_name, professor: sub_professor, roomName: sub_room, courseTimes: sub_coursetime))
+                sub_coursetime.removeAll()
+            } catch let error {
+                print("Error: \(error)")
+            }
         }
+//        for item in timeTables {
+//            print(item.courseName)
+//        }
+        return timeTables
     }
     
     //0 : 이수성적, 1:필수과목이수내역 2:설계과목이수내역
