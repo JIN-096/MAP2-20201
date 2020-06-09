@@ -65,7 +65,8 @@ class KnuNoticeController : UIViewController{
     private func configure()
     {
         tableView.dataSource = self
-        tableView.rowHeight = 70
+        tableView.estimatedRowHeight = 50
+        tableView.rowHeight = UITableView.automaticDimension
     }
     
     private func addSubView(){

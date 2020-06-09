@@ -45,6 +45,8 @@
 		CB66269E2459784E003F6196 /* KnuNoticeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB66269D2459784E003F6196 /* KnuNoticeCell.swift */; };
 		CBA1084024838FBB0043758A /* ComputerMajorNoticeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA1083F24838FBB0043758A /* ComputerMajorNoticeController.swift */; };
 		CBA10842248393FF0043758A /* ComputerMajorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA10841248393FF0043758A /* ComputerMajorCell.swift */; };
+		CBA46F032483DA4700148CDC /* ScheduleController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA46F022483DA4700148CDC /* ScheduleController.swift */; };
+		CBA46F052483DAEE00148CDC /* ScheduleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA46F042483DAEE00148CDC /* ScheduleCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -90,6 +92,8 @@
 		CB66269D2459784E003F6196 /* KnuNoticeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnuNoticeCell.swift; sourceTree = "<group>"; };
 		CBA1083F24838FBB0043758A /* ComputerMajorNoticeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComputerMajorNoticeController.swift; sourceTree = "<group>"; };
 		CBA10841248393FF0043758A /* ComputerMajorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComputerMajorCell.swift; sourceTree = "<group>"; };
+		CBA46F022483DA4700148CDC /* ScheduleController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleController.swift; sourceTree = "<group>"; };
+		CBA46F042483DAEE00148CDC /* ScheduleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -181,6 +185,7 @@
 				7648BA9C24838EDC009F4CE1 /* TableViewCellDepartment.swift */,
 				093D780324581E0E00E50437 /* Grade.swift */,
 				098B06E2248D655B005E3BDB /* Timetable.swift */,
+				CBA46F042483DAEE00148CDC /* ScheduleCell.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -204,6 +209,7 @@
 				CBA1083F24838FBB0043758A /* ComputerMajorNoticeController.swift */,
 				7648BA9E24839030009F4CE1 /* DepartmentNoticeController.swift */,
 				098B06E8248E68EC005E3BDB /* TimeTableViewController.swift */,
+				CBA46F022483DA4700148CDC /* ScheduleController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -354,6 +360,8 @@
 				CBA10842248393FF0043758A /* ComputerMajorCell.swift in Sources */,
 				098B06E9248E68EC005E3BDB /* TimeTableViewController.swift in Sources */,
 				7648BA9F24839030009F4CE1 /* DepartmentNoticeController.swift in Sources */,
+				CBA46F032483DA4700148CDC /* ScheduleController.swift in Sources */,
+				CBA46F052483DAEE00148CDC /* ScheduleCell.swift in Sources */,
 				093D780424581E0E00E50437 /* Grade.swift in Sources */,
 				093D77FE24570D6900E50437 /* Notice.swift in Sources */,
 				CB66269E2459784E003F6196 /* KnuNoticeCell.swift in Sources */,

@@ -22,13 +22,15 @@ class DepartmnetNoticeController : UIViewController{
         
         configure()
         autoLayout()
-        
+        departmentTableView.tableFooterView = UIView()
     }
+    
     private func configure(){
         departmentTableView.translatesAutoresizingMaskIntoConstraints = false
         departmentTableView.register(TabelViewCellDepartment.self, forCellReuseIdentifier: TabelViewCellDepartment.identifier)
         departmentTableView.dataSource = self
-        departmentTableView.rowHeight = 40
+        departmentTableView.estimatedRowHeight = 50
+        departmentTableView.rowHeight = UITableView.automaticDimension
     }
     
     private func autoLayout(){

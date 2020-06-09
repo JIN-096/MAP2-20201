@@ -7,6 +7,8 @@ target 'MAP2-20201' do
   
   pod 'SwiftSoup'
   pod 'Alamofire', '~> 5.1'
+  pod 'Elliotable'
+
   # Pods for MAP2-20201
 
 end
