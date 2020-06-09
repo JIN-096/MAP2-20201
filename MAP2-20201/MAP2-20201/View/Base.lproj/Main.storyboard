@@ -4,7 +4,6 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -138,17 +137,16 @@
                     </tabBar>
                     <connections>
                         <segue destination="Phv-ha-5CJ" kind="relationship" relationship="viewControllers" id="pmd-RV-nHr"/>
-                        <segue destination="qCN-Ui-d4W" kind="relationship" relationship="viewControllers" id="k7n-Fs-ZbY"/>
-                        <segue destination="o1R-m5-fxf" kind="relationship" relationship="viewControllers" id="Rtk-Dg-ros"/>
-                        <segue destination="5pk-X6-E3t" kind="relationship" relationship="viewControllers" id="0D7-ye-KVz"/>
                         <segue destination="VDb-Dd-aew" kind="relationship" relationship="viewControllers" id="4Nk-Sb-dtG"/>
+                        <segue destination="5pk-X6-E3t" kind="relationship" relationship="viewControllers" id="0D7-ye-KVz"/>
+                        <segue destination="o1R-m5-fxf" kind="relationship" relationship="viewControllers" id="Rtk-Dg-ros"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i25-yi-6SU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-968" y="81"/>
         </scene>
-        <!--Item-->
+        <!--Timetable-->
         <scene sceneID="dhH-WN-3ou">
             <objects>
                 <viewController id="VDb-Dd-aew" customClass="TimeTableViewController" customModule="MAP2_20201" customModuleProvider="target" sceneMemberID="viewController">
@@ -165,7 +163,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="Voa-LC-D3X"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="i2X-dD-w37"/>
+                    <tabBarItem key="tabBarItem" title="Timetable" image="clock" catalog="system" id="i2X-dD-w37"/>
                     <connections>
                         <outlet property="elliotable" destination="12T-fh-fUf" id="Y2K-pP-4eD"/>
                     </connections>
@@ -173,44 +171,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Zz-lk-msM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-704.34782608695662" y="779.46428571428567"/>
-        </scene>
-        <!--Timetable-->
-        <scene sceneID="LWE-QC-WRb">
-            <objects>
-                <collectionViewController id="qCN-Ui-d4W" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="sv5-ad-eiR">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="khL-bG-UQO">
-                            <size key="itemSize" width="414" height="819"/>
-                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                        </collectionViewFlowLayout>
-                        <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Z6c-sR-LaK">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="819"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="lvo-b6-m9g">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="819"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </collectionViewCellContentView>
-                                <size key="customSize" width="414" height="819"/>
-                            </collectionViewCell>
-                        </cells>
-                        <connections>
-                            <outlet property="dataSource" destination="qCN-Ui-d4W" id="MIE-5m-hTr"/>
-                            <outlet property="delegate" destination="qCN-Ui-d4W" id="gdB-Fv-tW2"/>
-                        </connections>
-                    </collectionView>
-                    <tabBarItem key="tabBarItem" title="Timetable" image="clock" catalog="system" id="sv0-kv-J2i">
-                        <color key="badgeColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </tabBarItem>
-                </collectionViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="HI4-UI-Hxm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="92.753623188405811" y="401.78571428571428"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="y7G-AC-E9X">
