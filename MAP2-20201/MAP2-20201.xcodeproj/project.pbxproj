@@ -17,6 +17,8 @@
 		3C6AA7CD7F49C15B68A30814 /* Pods_MAP2_20201.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57EE6CF08F673ED04457F45F /* Pods_MAP2_20201.framework */; };
 		7648BA9D24838EDC009F4CE1 /* TableViewCellDepartment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7648BA9C24838EDC009F4CE1 /* TableViewCellDepartment.swift */; };
 		7648BA9F24839030009F4CE1 /* DepartmentNoticeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7648BA9E24839030009F4CE1 /* DepartmentNoticeController.swift */; };
+		7657F6A9248613E2003E5A1E /* GradeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7657F6A8248613E2003E5A1E /* GradeCell.swift */; };
+		7657F6AB24861466003E5A1E /* GradeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7657F6AA24861466003E5A1E /* GradeController.swift */; };
 		7670BBEA244731E500BF28B5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7670BBE9244731E500BF28B5 /* AppDelegate.swift */; };
 		7670BBEC244731E500BF28B5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7670BBEB244731E500BF28B5 /* SceneDelegate.swift */; };
 		7670BBEE244731E500BF28B5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7670BBED244731E500BF28B5 /* ViewController.swift */; };
@@ -40,6 +42,8 @@
 		57EE6CF08F673ED04457F45F /* Pods_MAP2_20201.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MAP2_20201.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7648BA9C24838EDC009F4CE1 /* TableViewCellDepartment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCellDepartment.swift; sourceTree = "<group>"; };
 		7648BA9E24839030009F4CE1 /* DepartmentNoticeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepartmentNoticeController.swift; sourceTree = "<group>"; };
+		7657F6A8248613E2003E5A1E /* GradeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradeCell.swift; sourceTree = "<group>"; };
+		7657F6AA24861466003E5A1E /* GradeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradeController.swift; sourceTree = "<group>"; };
 		7670BBE6244731E500BF28B5 /* MAP2-20201.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MAP2-20201.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7670BBE9244731E500BF28B5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7670BBEB244731E500BF28B5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -119,6 +123,7 @@
 				CBA10841248393FF0043758A /* ComputerMajorCell.swift */,
 				7648BA9C24838EDC009F4CE1 /* TableViewCellDepartment.swift */,
 				093D780324581E0E00E50437 /* Grade.swift */,
+				7657F6A8248613E2003E5A1E /* GradeCell.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -139,6 +144,7 @@
 				CB66269B24597330003F6196 /* KnuNoticeController.swift */,
 				CBA1083F24838FBB0043758A /* ComputerMajorNoticeController.swift */,
 				7648BA9E24839030009F4CE1 /* DepartmentNoticeController.swift */,
+				7657F6AA24861466003E5A1E /* GradeController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -271,6 +277,7 @@
 				CBA10842248393FF0043758A /* ComputerMajorCell.swift in Sources */,
 				7648BA9F24839030009F4CE1 /* DepartmentNoticeController.swift in Sources */,
 				093D780424581E0E00E50437 /* Grade.swift in Sources */,
+				7657F6AB24861466003E5A1E /* GradeController.swift in Sources */,
 				093D77FE24570D6900E50437 /* Notice.swift in Sources */,
 				CB66269E2459784E003F6196 /* KnuNoticeCell.swift in Sources */,
 				CB66269C24597330003F6196 /* KnuNoticeController.swift in Sources */,
@@ -279,6 +286,7 @@
 				093D77FC2456FBF300E50437 /* Person_Info.swift in Sources */,
 				7670BBEA244731E500BF28B5 /* AppDelegate.swift in Sources */,
 				7648BA9D24838EDC009F4CE1 /* TableViewCellDepartment.swift in Sources */,
+				7657F6A9248613E2003E5A1E /* GradeCell.swift in Sources */,
 				7670BBEC244731E500BF28B5 /* SceneDelegate.swift in Sources */,
 				093D78002457BB4400E50437 /* Curriculum.swift in Sources */,
 			);
