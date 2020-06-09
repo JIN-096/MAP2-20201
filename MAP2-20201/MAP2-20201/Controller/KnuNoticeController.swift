@@ -13,9 +13,9 @@ class KnuNoticeController : UIViewController{
     
     var Notice_knu : [Notice]? = Crawler.shared.knu_notice_crawl(URL: nil)
     var myGrade : [Grade]?
-    var timeTable : [Timetable]?
+   
   //  var semesters : [String]?
-    var myCourses : [(Code : String, sub : String)]?
+     
     
     private let tableView : UITableView = {
         let tableView = UITableView()
@@ -58,31 +58,7 @@ class KnuNoticeController : UIViewController{
 //                break
 //            }
 //        }
-      //  수강하고 있는 정보 가져오기
-//        Crawler.shared.time_table_crawl(semester: nil){ result in
-//            switch result{
-//
-//            case .success(let mycourse):
-//                self.myCourses = mycourse
-//                for data in self.myCourses!{
-//                    print(data.Code, data.sub)
-//                }
-//                self.timeTable = Crawler.shared.time_table_data_crawl(semester: "20201", Codes: self.myCourses!)
-//                if self.timeTable != nil{
-//                    for course in self.timeTable!{
-//                        print(course.courseName)
-//                        for time in course.courseTimes{
-//                            print(time.courseDay, terminator: " ")
-//                            print(time.startTime, terminator: " ")
-//                            print(time.endTime)
-//                        }
-//                        print("-----------------------------")
-//                    }
-//                }
-//            case .failure(let error):
-//                print(error)
-//            }
-//        }
+      
         
     }
     

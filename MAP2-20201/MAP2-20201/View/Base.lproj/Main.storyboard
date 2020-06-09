@@ -2,7 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="qco-eM-ome">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -141,16 +141,42 @@
                         <segue destination="qCN-Ui-d4W" kind="relationship" relationship="viewControllers" id="k7n-Fs-ZbY"/>
                         <segue destination="o1R-m5-fxf" kind="relationship" relationship="viewControllers" id="Rtk-Dg-ros"/>
                         <segue destination="5pk-X6-E3t" kind="relationship" relationship="viewControllers" id="0D7-ye-KVz"/>
+                        <segue destination="VDb-Dd-aew" kind="relationship" relationship="viewControllers" id="4Nk-Sb-dtG"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i25-yi-6SU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-968" y="81"/>
         </scene>
+        <!--Item-->
+        <scene sceneID="dhH-WN-3ou">
+            <objects>
+                <viewController id="VDb-Dd-aew" customClass="TimeTableViewController" customModule="MAP2_20201" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ihU-ee-s70">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="12T-fh-fUf" customClass="Elliotable" customModule="Elliotable">
+                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="Voa-LC-D3X"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="i2X-dD-w37"/>
+                    <connections>
+                        <outlet property="elliotable" destination="12T-fh-fUf" id="Y2K-pP-4eD"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9Zz-lk-msM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-704.34782608695662" y="779.46428571428567"/>
+        </scene>
         <!--Timetable-->
         <scene sceneID="LWE-QC-WRb">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="HI4-UI-Hxm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <collectionViewController id="qCN-Ui-d4W" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="sv5-ad-eiR">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -182,6 +208,7 @@
                         <color key="badgeColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBarItem>
                 </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HI4-UI-Hxm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="92.753623188405811" y="401.78571428571428"/>
         </scene>
@@ -598,21 +625,21 @@
             <point key="canvasLocation" x="2329" y="-104"/>
         </scene>
     </scenes>
+    <color key="tintColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
     <resources>
         <image name="1111.png" width="361.92001342773438" height="86.879997253417969"/>
         <image name="2222.png" width="349" height="85.919998168945312"/>
         <image name="3333.png" width="349" height="85.919998168945312"/>
-        <image name="book" catalog="system" width="64" height="50"/>
-        <image name="cart" catalog="system" width="64" height="50"/>
-        <image name="clock" catalog="system" width="64" height="60"/>
+        <image name="book" catalog="system" width="128" height="101"/>
+        <image name="cart" catalog="system" width="128" height="102"/>
+        <image name="clock" catalog="system" width="128" height="121"/>
         <image name="cse.jpg" width="591.4285888671875" height="418"/>
         <image name="gradeimage2.jpg" width="374" height="353"/>
-        <image name="house" catalog="system" width="64" height="54"/>
+        <image name="house" catalog="system" width="128" height="110"/>
         <image name="knucsepuzzle.jpg" width="848" height="141"/>
         <image name="planimage2.jpg" width="374" height="353"/>
         <image name="testt.png" width="349" height="80.639999389648438"/>
         <image name="스크린샷 2020-06-07 오후 3.00.18.png" width="336" height="116"/>
         <image name="스크린샷 2020-06-07 오후 3.28.54.png" width="677" height="381"/>
     </resources>
-    <color key="tintColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>
