@@ -49,6 +49,9 @@
 		CBA10842248393FF0043758A /* ComputerMajorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA10841248393FF0043758A /* ComputerMajorCell.swift */; };
 		CBA46F032483DA4700148CDC /* ScheduleController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA46F022483DA4700148CDC /* ScheduleController.swift */; };
 		CBA46F052483DAEE00148CDC /* ScheduleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA46F042483DAEE00148CDC /* ScheduleCell.swift */; };
+		CBAE1C0D248F5F7E007C7B71 /* ManageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAE1C0C248F5F7E007C7B71 /* ManageController.swift */; };
+		CBAE1C0F248F6083007C7B71 /* ManageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAE1C0E248F6083007C7B71 /* ManageCell.swift */; };
+		CBAE1C11248F7365007C7B71 /* Necessary.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAE1C10248F7365007C7B71 /* Necessary.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -98,6 +101,9 @@
 		CBA10841248393FF0043758A /* ComputerMajorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComputerMajorCell.swift; sourceTree = "<group>"; };
 		CBA46F022483DA4700148CDC /* ScheduleController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleController.swift; sourceTree = "<group>"; };
 		CBA46F042483DAEE00148CDC /* ScheduleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleCell.swift; sourceTree = "<group>"; };
+		CBAE1C0C248F5F7E007C7B71 /* ManageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageController.swift; sourceTree = "<group>"; };
+		CBAE1C0E248F6083007C7B71 /* ManageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageCell.swift; sourceTree = "<group>"; };
+		CBAE1C10248F7365007C7B71 /* Necessary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Necessary.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -191,6 +197,8 @@
 				7657F6A8248613E2003E5A1E /* GradeCell.swift */,
 				098B06E2248D655B005E3BDB /* Timetable.swift */,
 				CBA46F042483DAEE00148CDC /* ScheduleCell.swift */,
+				CBAE1C0E248F6083007C7B71 /* ManageCell.swift */,
+				CBAE1C10248F7365007C7B71 /* Necessary.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -216,6 +224,7 @@
 				7657F6AA24861466003E5A1E /* GradeController.swift */,
 				098B06E8248E68EC005E3BDB /* TimeTableViewController.swift */,
 				CBA46F022483DA4700148CDC /* ScheduleController.swift */,
+				CBAE1C0C248F5F7E007C7B71 /* ManageController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -362,11 +371,13 @@
 			files = (
 				093D77F72455823B00E50437 /* Crawler.swift in Sources */,
 				098B06E3248D655B005E3BDB /* Timetable.swift in Sources */,
+				CBAE1C0D248F5F7E007C7B71 /* ManageController.swift in Sources */,
 				7670BBEE244731E500BF28B5 /* ViewController.swift in Sources */,
 				CBA10842248393FF0043758A /* ComputerMajorCell.swift in Sources */,
 				098B06E9248E68EC005E3BDB /* TimeTableViewController.swift in Sources */,
 				7648BA9F24839030009F4CE1 /* DepartmentNoticeController.swift in Sources */,
 				CBA46F032483DA4700148CDC /* ScheduleController.swift in Sources */,
+				CBAE1C11248F7365007C7B71 /* Necessary.swift in Sources */,
 				CBA46F052483DAEE00148CDC /* ScheduleCell.swift in Sources */,
 				093D780424581E0E00E50437 /* Grade.swift in Sources */,
 				7657F6AB24861466003E5A1E /* GradeController.swift in Sources */,
@@ -380,6 +391,7 @@
 				7648BA9D24838EDC009F4CE1 /* TableViewCellDepartment.swift in Sources */,
 				7657F6A9248613E2003E5A1E /* GradeCell.swift in Sources */,
 				7670BBEC244731E500BF28B5 /* SceneDelegate.swift in Sources */,
+				CBAE1C0F248F6083007C7B71 /* ManageCell.swift in Sources */,
 				093D78002457BB4400E50437 /* Curriculum.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -36,8 +36,8 @@ public class Person_Info
         //self.login_status = false
 //        let ID = "wan2good"
 //        let PW = "wan2good!@"
-        let ID = "gwh1108"
-        let PW = "tkrk1357@"
+        let ID = "wan2good"
+        let PW = "cjswl1256z!@"
 //          let ID = "shs960501"
 //          let PW = "song5961!"
         let parameter = [

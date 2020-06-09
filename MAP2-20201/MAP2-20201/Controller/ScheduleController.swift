@@ -100,7 +100,7 @@ extension ScheduleController: UITableViewDataSource{
        
         
         cell.month_day.text = calendars?[month-1].schedules[indexPath.row].day ?? ""
-        cell.content.text = calendars?[month-1].schedules[indexPath.row].content ?? "g"
+        cell.content.text = calendars?[month-1].schedules[indexPath.row].content ?? ""
         cell.separatorInset = UIEdgeInsets.zero
         
     
