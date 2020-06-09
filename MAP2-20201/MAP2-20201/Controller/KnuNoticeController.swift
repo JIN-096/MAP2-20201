@@ -12,6 +12,10 @@ import UIKit
 class KnuNoticeController : UIViewController{
     
     var Notice_knu : [Notice]? = Crawler.shared.knu_notice_crawl(URL: nil)
+    var myGrade : [Grade]?
+   
+  //  var semesters : [String]?
+     
     
     private let tableView : UITableView = {
         let tableView = UITableView()
@@ -25,14 +29,44 @@ class KnuNoticeController : UIViewController{
         configure()
         addSubView()
         autoLayout()
+      
+//        Crawler.shared.grade_crawl(category: 0){ result in
+//            switch result {
+//            case .success(let grade) :
+//                self.myGrade = grade
+//                for data in self.myGrade!{
+//                    print("\(data.code) \(data.open_department) \(data.name) \(data.type) \(data.grade_unit) \(data.semester) \(data.rating) \(data.retake)")
+//                }
+//                print("success")
+//                break
+//            case .failure(let error) :
+//                print(error)
+//                break
+//            }
+//        }
+        //학기 받아오기
+//        Crawler.shared.time_table_semester_crawl{ result in
+//            switch result{
+//            case .success(let semester):
+//                self.semesters = semester
+//                for data in self.semesters!{
+//                    print(data)
+//                }
+//                break
+//            case .failure(let error):
+//                print(error)
+//                break
+//            }
+//        }
+      
+        
     }
-    
-    
     
     private func configure()
     {
         tableView.dataSource = self
-        tableView.rowHeight = 70
+        tableView.estimatedRowHeight = 50
+        tableView.rowHeight = UITableView.automaticDimension
     }
     
     private func addSubView(){
@@ -64,3 +98,4 @@ extension KnuNoticeController: UITableViewDataSource {
         return cell
     }
 }
+

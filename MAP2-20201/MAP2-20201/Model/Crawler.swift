@@ -90,11 +90,114 @@ class Crawler
         }
         return notices
     }
+   
     
+    //knu.ac.kr 본관 공지 크롤링 변경
+       func knu_notice_crawl(page : Int?) -> [Notice]?
+       {
+           var document : Document?
+           var url = "https://knu.ac.kr/wbbs/wbbs/bbs/btin/stdList.action?menu_idx=42"
+            let target_page : String  = "&btin.page=" + String(page ?? 1)
+                   url = url + target_page
+           document = downloadHTML(input_URL: url) ?? nil
+           if(document == nil){
+               return nil
+           }
+           var notices = [Notice]()
+           let selector = "tbody>tr"
+           do {
+               //여기서  element객체를 css selector를 통해 파싱해서 element에 넣어줌.
+               let elements: Elements = try document!.select(selector )
+               //transform it into a local object (Item)
+               for element in elements {
+                   let num = try element.select(".num").text();
+                   let title = try element.select("a").text()
+                   let ref : String =  try element.select("a").attr("href")
+                   let writer = try element.select(".writer").text()
+                   let date = try element.select(".date").text()
+                   let hit = try element.select(".hit").text()
+                   let file = try element.select(".file").text().elementsEqual("")
+                   notices.append(Notice(num: num,title: title,ref: ref,wrtier: writer,date: date,hit: hit,file: file))
+               }
+               
+           } catch let error {
+               print("Error: \(error)")
+           }
+           return notices
+       }
     //computer.knu.ac.kr 전체공지
     func computer_total_notice_crawl(URL : String?) -> [Notice]?
     {
         var document : Document?
+        let url = URL ?? "http://computer.knu.ac.kr/06_sub/02_sub.html"
+        document = downloadHTML(input_URL: url) ?? nil
+        if(document == nil){
+            return nil
+        }
+        var notices = [Notice]()
+        let selector = "tbody>tr"
+        do {
+            //여기서  element객체를 css selector를 통해 파싱해서 element에 넣어줌.
+            let elements: Elements = try document!.select(selector )
+            //transform it into a local object (Item)
+            for element in elements {
+                let num = try element.select(".bbs_num").text();
+                let title = try element.select("a").text()
+                let ref : String =  try element.select("a").attr("href")
+                let writer = try element.select(".bbs_writer").text()
+                let date = try element.select(".bbs_date").text()
+                let hit = try element.select(".bbs_hit").text()
+                let file = false
+                notices.append(Notice(num: num,title: title,ref: ref,wrtier: writer,date: date,hit: hit,file: file))
+            }
+
+        } catch let error {
+            print("Error: \(error)")
+        }
+        return notices
+    }
+    
+    //computer.knu.ac.kr 전체공지 변경
+    func computer_total_notice_crawl(page : Int?) -> [Notice]?
+       {
+           var document : Document?
+           var url = "http://computer.knu.ac.kr/06_sub/02_sub.html"
+            let target_page : String  = "?page=" + String(page ?? 1)
+            url = url + target_page
+        document = downloadHTML(input_URL: url) ?? nil
+           if(document == nil){
+               return nil
+           }
+           var notices = [Notice]()
+           let selector = "tbody>tr"
+           do {
+               //여기서  element객체를 css selector를 통해 파싱해서 element에 넣어줌.
+               let elements: Elements = try document!.select(selector )
+               //transform it into a local object (Item)
+               for element in elements {
+                   let num = try element.select(".bbs_num").text();
+                   let title = try element.select("a").text()
+                   let ref : String =  try element.select("a").attr("href")
+                   let writer = try element.select(".bbs_writer").text()
+                   let date = try element.select(".bbs_date").text()
+                   let hit = try element.select(".bbs_hit").text()
+                   let file = false
+                   notices.append(Notice(num: num,title: title,ref: ref,wrtier: writer,date: date,hit: hit,file: file))
+               }
+               
+           } catch let error {
+               print("Error: \(error)")
+           }
+           return notices
+       }
+    
+    
+    
+//    computer.knu.ac.kr 학사공지
+    func computer_major_notice_crawl(URL : String?) -> [Notice]?
+    {
+        var document : Document?
+    
         let url = URL ?? "http://computer.knu.ac.kr/06_sub/02_sub_2.html"
         document = downloadHTML(input_URL: url) ?? nil
         if(document == nil){
@@ -125,39 +228,41 @@ class Crawler
         return notices
     }
     
-    //computer.knu.ac.kr 학사공지
-    func computer_major_notice_crawl(URL : String?) -> [Notice]?
-    {
-        var document : Document?
-        let url = URL ?? "http://computer.knu.ac.kr/06_sub/02_sub_2.html"
-        document = downloadHTML(input_URL: url) ?? nil
-        if(document == nil){
-            return nil
-        }
-        var notices = [Notice]()
-        let selector = "tbody>tr"
-        do {
-            //여기서  element객체를 css selector를 통해 파싱해서 element에 넣어줌.
-            let elements: Elements = try document!.select(selector )
-            //transform it into a local object (Item)
-            for element in elements {
-                let num = try element.select(".bbs_num").text();
-                let title = try element.select("a").text()
-                let ref : String =  try element.select("a").attr("href")
-                let writer = try element.select(".bbs_writer").text()
-                let date = try element.select(".bbs_date").text()
-                let hit = try element.select(".bbs_hit").text()
-                let file = false
-                notices.append(Notice(num: num,title: title,ref: ref,wrtier: writer,date: date,hit: hit,file: file))
-                //   print("num = \(num)" , "title = \(title)" , "title_to = \(ref)" , "writer = \(writer)" ,"date = \(date)" ,"hit = \(hit)" , "file 유무 : \(file)",separator : "\n")
-                // print("========================================================")
-            }
-            
-        } catch let error {
-            print("Error: \(error)")
-        }
-        return notices
-    }
+    
+    //computer.knu.ac.kr 학사공지 변경
+       func computer_major_notice_crawl(page : Int?) -> [Notice]?
+       {
+           var document : Document?
+           let target_page : String  = "?page=" + String(page ?? 1)
+           var url = "http://computer.knu.ac.kr/06_sub/02_sub_2.html"
+           url = url + target_page
+           document = downloadHTML(input_URL: url) ?? nil
+           if(document == nil){
+               return nil
+           }
+           var notices = [Notice]()
+           let selector = "tbody>tr"
+           do {
+               //여기서  element객체를 css selector를 통해 파싱해서 element에 넣어줌.
+               let elements: Elements = try document!.select(selector )
+               //transform it into a local object (Item)
+               for element in elements {
+                   let num = try element.select(".bbs_num").text();
+                   let title = try element.select("a").text()
+                   let ref : String =  try element.select("a").attr("href")
+                   let writer = try element.select(".bbs_writer").text()
+                   let date = try element.select(".bbs_date").text()
+                   let hit = try element.select(".bbs_hit").text()
+                   let file = false
+                   notices.append(Notice(num: num,title: title,ref: ref,wrtier: writer,date: date,hit: hit,file: file))
+               }
+
+           } catch let error {
+               print("Error: \(error)")
+           }
+           return notices
+       }
+    
     
     //학사일정
     func academic_calendar_crawl() -> [Calendar]?
@@ -166,6 +271,50 @@ class Crawler
         var document : Document?
         let selector = "#calendar > dl"
         document = downloadHTML(input_URL: "http://knu.ac.kr/wbbs/wbbs/user/yearSchedule/index.action?menu_idx=43&schedule.search_year=2020") ?? nil
+        if(document != nil)
+        {
+            do{
+                let elements : Elements = try document!.select(selector)
+                for element in elements{
+                   // print("==========================")
+                    let full_date = try element.select("dt").text()
+                    let year = Int(full_date.prefix(4))!
+                    let start_index = full_date.index(full_date.startIndex,offsetBy: 5)
+                    let end_index = full_date.index(full_date.startIndex, offsetBy: 6)
+                    let month = Int(full_date[start_index...end_index]) ?? 0
+                    
+//                    print(try element.select("dt").text())
+                    
+                    print("---------월 별 구분 ---------")
+                    var schedules : [Schedule] = []
+                    let fuck : Elements = try element.select(".list > ul > li")
+                    for fucking in fuck{
+                        let full_string = try fucking.text()
+                        let day = String(full_string.prefix(8))
+                        let index = full_string.index(full_string.startIndex,offsetBy: 8)
+                        let content = String(full_string.suffix(from: index))
+                        schedules.append(Schedule(day: day, content: content))
+                       // print("날짜 : " + day)
+                        //print("내용 : " + content)
+                    }
+                    calendars.append(Calendar(year: year, month: month, schedules: schedules))
+//                    print("===================")
+                }
+            }catch let error{
+                print("error : \(error)")
+            }
+            return calendars
+        }
+        return nil
+    }
+    
+    //학사일정 변경 year 따라 받을 수있도록 변경
+    func academic_calendar_crawl(year : Int) -> [Calendar]?
+    {
+        var calendars = [Calendar]()
+        var document : Document?
+        let selector = "#calendar > dl"
+        document = downloadHTML(input_URL: "http://knu.ac.kr/wbbs/wbbs/user/yearSchedule/index.action?menu_idx=43&schedule.search_year=" + String(year)) ?? nil
         if(document != nil)
         {
             do{
@@ -202,7 +351,6 @@ class Crawler
         }
         return nil
     }
-    
     //교과과정(심컴기준 커리큘럼)
     func curriculum_crawl() -> [Curriculum]?
     {
@@ -285,14 +433,148 @@ class Crawler
         return nil
     }
     
-    func time_table_crawl()
-    {
+    //수강한 전체 학기 받아 오기
+    func time_table_semester_crawl(completiontHandler: @escaping (Result<[String],Error>) -> Void){
+        let selector = "#search_set_cde > option"
+        AF.request("http://abeek.knu.ac.kr/Keess/kees/web/stun/stunLectInfoEnq/list.action", method: .get).responseString{response in
+            switch response.result
+            {
+            case .success(let html) :
+                do{
+                    var semesters = [String]()
+                    //let html = try response.result.get()
+                    var document : Document = Document.init("")
+                    document = try SwiftSoup.parse(html)
+                    let elements : Elements = try document.select(selector)
+                    for element in elements{
+                        semesters.append(try element.attr("value"))
+                        //print(try element.attr("value"))
+                    }
+                    completiontHandler(.success(semesters))
+                }catch{
+                    completiontHandler(.failure(error))
+                }
+                break
+            case .failure(let error) :
+                print("error : \(error)")
+               completiontHandler(.failure(error))
+                break
+            }
+        }
+    }
+    
+    //어떤 과목을 수강하고 있는지 받아와서 핸들러를 통해 수강하고있는 과목 정보를 전달.
+    //학기 및 수업 코드 분반 번호 받아오기.
+    func time_table_crawl(semester : String?, completiontHandler: @escaping (Result<[(String,String)],Error>) -> Void){
+        let selector = ".left > a"
         
+        let url : String = "http://abeek.knu.ac.kr/Keess/kees/web/stun/stunLectInfoEnq/list.action?lectInfo.open_yr_trm=" + String(semester ?? "")
+        AF.request(url, method: .get).responseString{response in
+            switch response.result
+            {
+            case .success(let html) :
+                do{
+                    var myCourse = [(Code : String,sub : String)]()
+                    //let html = try response.result.get()
+                    var document : Document = Document.init("")
+                    document = try SwiftSoup.parse(html)
+                    let elements : Elements = try document.select(selector)
+                    for element in elements{
+                        //print(try element.attr("href"))
+                        let attr = try element.attr("href").getArrayAfterRegex(regex: "(?<=')[a-zA-Z0-9]*(?=')")
+                        myCourse.append((attr[0], attr[1]))
+                    }
+                    completiontHandler(.success(myCourse))
+                }catch{
+                    completiontHandler(.failure(error))
+                }
+                break
+            case .failure(let error) :
+                print("error : \(error)")
+                completiontHandler(.failure(error))
+                break
+            }
+        }
+    }
+    
+    //http://my.knu.ac.kr/stpo/stpo/cour/plans/viewPlanDetailNew.action?plans.searchOpenYrTrm=%2720191%27&plans.searchSubjCde=%27CLTR211%27&plans.searchSubClassCde=%27037%27
+    //수강정보를 받아와서 강의계획서에서 시간표를 만들기위한 데이터로 처리하는 과정.
+    func time_table_data_crawl(semester : String, Codes : [(Code : String, sub : String)]) -> [Timetable]?{
+        let sub_url1 : String = "?plans.searchOpenYrTrm='" + semester + "''"
+        var timeTables = [Timetable]()
+        for data in Codes{
+            var checkindex = 0
+            var sub_course_name : String = ""
+            var sub_course_id : String = ""
+            var sub_professor : String = ""
+            var sub_room : String = ""
+            var sub_coursetime = [CourseTime]()
+            let sub_url2 : String = "&plans.searchSubjCde='" + data.Code + "'&plans.searchSubClassCde='" + data.sub + "'"
+            let url = "http://my.knu.ac.kr/stpo/stpo/cour/plans/viewPlanDetailNew.action" + sub_url1 + sub_url2
+            var document : Document?
+            document = downloadHTML(input_URL: url) ?? nil
+            if(document == nil){
+                print("url strange!")
+                return nil
+            }
+            let selector = "#form1>tbody>tr>td"
+            do {
+                //여기서  element객체를 css selector를 통해 파싱해서 element에 넣어줌.
+                let elements: Elements = try document!.select(selector)
+                //transform it into a local object (Item)
+                for element in elements {
+                    switch checkindex {
+                    case 0:
+                        sub_course_name = try element.text()
+                        break
+                    case 1 :
+                        sub_course_id = try element.text()
+                        break
+                    case 6 :
+                        sub_professor = try element.text()
+                        break
+                    case 7 :
+                        
+                        let times = try element.text().components(separatedBy: " ")
+                        for time in times {
+                            let index = time.startIndex
+                            let day = String(time[...index])
+                            let detailtime = String(time[index...]).getArrayAfterRegex(regex : "[0-9]{1,}[A|B]")
+                            let start = detailtime[detailtime.startIndex]
+                            let end = detailtime[detailtime.endIndex - 1]
+                            let course_startTime = TimeFormatChange(unformatted_time: start, type: 0)
+                            let course_endTime = TimeFormatChange(unformatted_time: end, type: 1)
+                            print("get after start translate : \(course_startTime)")
+                            print("get after end translate : \(course_endTime)")
+                                
+                            sub_coursetime.append(CourseTime(courseDay: day, startTime: course_startTime, endTime: course_endTime))
+                        }
+                        break
+                    case 8 :
+                        let rooms = try element.text().components(separatedBy: " ")
+                        sub_room = rooms[0]
+                        break
+                    default:
+                        break;
+                    }
+                    checkindex = checkindex + 1
+                    //print(try element.text())
+                }
+                timeTables.append(Timetable(courseId: sub_course_id, courseName: sub_course_name, professor: sub_professor, roomName: sub_room, courseTimes: sub_coursetime))
+                sub_coursetime.removeAll()
+            } catch let error {
+                print("Error: \(error)")
+            }
+        }
+//        for item in timeTables {
+//            print(item.courseName)
+//        }
+        return timeTables
     }
     
     //0 : 이수성적, 1:필수과목이수내역 2:설계과목이수내역
     //쿠키 세션 태스크 같이 연결해서 써야되는거 같음 내일 ㄱ
-    func grade_crawl(category type : Int)
+    func grade_crawl(category type : Int, completiontHandler: @escaping (Result<[Grade],Error>) -> Void)
     {	
         //    print(Person_Info.sharedd.login_status)
         //      print(Person_Info.shared.cookie)
@@ -332,24 +614,72 @@ class Crawler
             {
             case .success(let html) :
                 do{
+                    var myGrade = [Grade]()
                     //let html = try response.result.get()
                     var document : Document = Document.init("")
+                    var sub_code = ""
+                    var sub_department = ""
+                    var sub_name = ""
+                    var sub_type = ""
+                    var sub_gradeunit = ""
+                    var sub_semester = ""
+                    var sub_rating = ""
+                    var recourse = false
                     document = try SwiftSoup.parse(html)
                     let elements : Elements = try document.select(selector)
                     for element in elements{
-                        print(try element.text())
+                        let subelement = try element.select("td")
+                        var check_index = 1
+                        recourse = false
+                        for sub in subelement{
+                            switch check_index {
+                            case 1:
+                                sub_code = try sub.text()
+                                break
+                            case 2 :
+                                sub_department = try sub.text()
+                                break
+                            case 3:
+                                sub_name = try sub.text()
+                                break
+                            case 4 :
+                                sub_type = try sub.text()
+                                break
+                            case 5 :
+                                sub_gradeunit = try sub.text()
+                                break
+                            case 6 :
+                                sub_semester = try sub.text()
+                                break
+                            case 7 :
+                                sub_rating = try sub.text()
+                            case 8 :
+                                recourse = true
+                                break
+                            default:
+                                break
+                            }
+                            check_index = check_index + 1
+                        }
+                        if sub_code != ""
+                        {
+                            myGrade.append(Grade(code: sub_code, open_department: sub_department, name: sub_name, type: sub_type, grade_unit: Int(sub_gradeunit) ?? 0, semester: sub_semester, rating: sub_rating, retake: recourse))
+                        }
+//                        myGrade.append(Grade(code: attr[0], open_department: attr[1], name: attr[2], type: attr[3], grade_unit: Int(attr[4]) ?? 0 , semester: attr[5], rating: attr[6], retake: recourse))
                     }
-                    
+                    completiontHandler(.success(myGrade))
                 }catch{
-                    
+                    completiontHandler(.failure(error))
                 }
                 break
             case .failure(let error) :
                 print("error : \(error)")
+                completiontHandler(.failure(error))
                 break
             }
         }
     }
+    
     
     //추후 진행 예정 마일리지 내용 없어서 안에 구조를 모름 ㅎ
     func mileage_crawl()
@@ -357,3 +687,25 @@ class Crawler
         
     }
 }
+
+
+//정규식 사용을 위한 extension
+//사용법은 다음과 같음
+// let str =""
+//str.getArrayAfterRegex(regexp) -> String 배열로 반환.
+extension String{
+    func getArrayAfterRegex(regex : String) -> [String] {
+        do{
+            let regex = try NSRegularExpression(pattern : regex)
+            let results = regex.matches(in: self,  range: NSRange(self.startIndex..., in: self))
+            return results.map{
+                String(self[Range($0.range, in: self)!])
+            }
+        }catch let error{
+            print("invalid regex : \(error.localizedDescription)")
+            return []
+        }
+        
+    }
+}
+

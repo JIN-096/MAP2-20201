@@ -9,6 +9,7 @@
 import Foundation
 import Alamofire
 import SwiftSoup
+
 //swift getter setter는 프로퍼티를 사용한다.
 /*참조 : https://medium.com/ios-development-with-swift/%ED%94%84%EB%A1%9C%ED%8D%BC%ED%8B%B0-get-set-didset-willset-in-ios-a8f2d4da5514*/
 
@@ -37,6 +38,8 @@ public class Person_Info
 //        let PW = "wan2good!@"
         let ID = "gwh1108"
         let PW = "tkrk1357@"
+//          let ID = "shs960501"
+//          let PW = "song5961!"
         let parameter = [
             "user.usr_id" : ID,
             "user.passwd" : PW
@@ -111,9 +114,10 @@ public class Person_Info
                 AF.session.configuration.httpCookieStorage?.setCookie(cookie)
             }
             print(Person_Info.shared.login_status)
-         //   print(AF.session.configuration.httpCookieStorage?.cookies ?? "XX")
-           Crawler.shared.grade_crawl(category: 0)
+            //print(AF.session.configuration.httpCookieStorage?.cookies ?? "XX")
+          // Crawler.shared.grade_crawl(category: 0)
         }
     }
     
 }
+
