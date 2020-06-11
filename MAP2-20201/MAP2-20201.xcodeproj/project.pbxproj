@@ -43,6 +43,8 @@
 		7670BBEE244731E500BF28B5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7670BBED244731E500BF28B5 /* ViewController.swift */; };
 		7670BBF3244731E600BF28B5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7670BBF2244731E600BF28B5 /* Assets.xcassets */; };
 		7670BBF6244731E600BF28B5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7670BBF4244731E600BF28B5 /* LaunchScreen.storyboard */; };
+		CB5F4882249109DC005002DA /* TotalCondition.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5F4881249109DC005002DA /* TotalCondition.swift */; };
+		CB5F488424911512005002DA /* TotalConditionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5F488324911512005002DA /* TotalConditionCell.swift */; };
 		CB66269C24597330003F6196 /* KnuNoticeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB66269B24597330003F6196 /* KnuNoticeController.swift */; };
 		CB66269E2459784E003F6196 /* KnuNoticeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB66269D2459784E003F6196 /* KnuNoticeCell.swift */; };
 		CBA1084024838FBB0043758A /* ComputerMajorNoticeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA1083F24838FBB0043758A /* ComputerMajorNoticeController.swift */; };
@@ -95,6 +97,8 @@
 		7670BBF5244731E600BF28B5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7670BBF7244731E600BF28B5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C4FC4F9EE1730B6003B991FA /* Pods-MAP2-20201.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MAP2-20201.release.xcconfig"; path = "Target Support Files/Pods-MAP2-20201/Pods-MAP2-20201.release.xcconfig"; sourceTree = "<group>"; };
+		CB5F4881249109DC005002DA /* TotalCondition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalCondition.swift; sourceTree = "<group>"; };
+		CB5F488324911512005002DA /* TotalConditionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalConditionCell.swift; sourceTree = "<group>"; };
 		CB66269B24597330003F6196 /* KnuNoticeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnuNoticeController.swift; sourceTree = "<group>"; };
 		CB66269D2459784E003F6196 /* KnuNoticeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnuNoticeCell.swift; sourceTree = "<group>"; };
 		CBA1083F24838FBB0043758A /* ComputerMajorNoticeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComputerMajorNoticeController.swift; sourceTree = "<group>"; };
@@ -199,6 +203,8 @@
 				CBA46F042483DAEE00148CDC /* ScheduleCell.swift */,
 				CBAE1C0E248F6083007C7B71 /* ManageCell.swift */,
 				CBAE1C10248F7365007C7B71 /* Necessary.swift */,
+				CB5F4881249109DC005002DA /* TotalCondition.swift */,
+				CB5F488324911512005002DA /* TotalConditionCell.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -369,6 +375,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB5F488424911512005002DA /* TotalConditionCell.swift in Sources */,
 				093D77F72455823B00E50437 /* Crawler.swift in Sources */,
 				098B06E3248D655B005E3BDB /* Timetable.swift in Sources */,
 				CBAE1C0D248F5F7E007C7B71 /* ManageController.swift in Sources */,
@@ -381,6 +388,7 @@
 				CBA46F052483DAEE00148CDC /* ScheduleCell.swift in Sources */,
 				093D780424581E0E00E50437 /* Grade.swift in Sources */,
 				7657F6AB24861466003E5A1E /* GradeController.swift in Sources */,
+				CB5F4882249109DC005002DA /* TotalCondition.swift in Sources */,
 				093D77FE24570D6900E50437 /* Notice.swift in Sources */,
 				CB66269E2459784E003F6196 /* KnuNoticeCell.swift in Sources */,
 				CB66269C24597330003F6196 /* KnuNoticeController.swift in Sources */,

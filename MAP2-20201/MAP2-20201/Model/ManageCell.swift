@@ -47,14 +47,14 @@ class ManageCell : UITableViewCell
     {
         let margin: CGFloat = 5
         NSLayoutConstraint.activate([
-            subject_name.topAnchor.constraint(equalTo: self.topAnchor),
-            subject_name.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            subject_name.widthAnchor.constraint(equalToConstant: 70),
-            subject_name.heightAnchor.constraint(equalToConstant: 50),
+            subject_name.topAnchor.constraint(equalTo: self.topAnchor, constant: 13),
+            subject_name.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 30),
+//            subject_name.widthAnchor.constraint(equalToConstant: 70),
+//            subject_name.heightAnchor.constraint(equalToConstant: 50),
             
             take_bool.topAnchor.constraint(equalTo: self.topAnchor),
             take_bool.leadingAnchor.constraint(equalTo: subject_name.trailingAnchor, constant: margin),
-            take_bool.widthAnchor.constraint(equalToConstant: 50),
+            take_bool.widthAnchor.constraint(equalToConstant: 70),
             take_bool.heightAnchor.constraint(equalToConstant: 50),
             take_bool.trailingAnchor.constraint(equalTo: self.trailingAnchor),
         ])
