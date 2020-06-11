@@ -45,6 +45,7 @@
 		7670BBF6244731E600BF28B5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7670BBF4244731E600BF28B5 /* LaunchScreen.storyboard */; };
 		CB5F4882249109DC005002DA /* TotalCondition.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5F4881249109DC005002DA /* TotalCondition.swift */; };
 		CB5F488424911512005002DA /* TotalConditionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5F488324911512005002DA /* TotalConditionCell.swift */; };
+		CB5F48862492780D005002DA /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5F48852492780D005002DA /* ActivityIndicator.swift */; };
 		CB66269C24597330003F6196 /* KnuNoticeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB66269B24597330003F6196 /* KnuNoticeController.swift */; };
 		CB66269E2459784E003F6196 /* KnuNoticeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB66269D2459784E003F6196 /* KnuNoticeCell.swift */; };
 		CBA1084024838FBB0043758A /* ComputerMajorNoticeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA1083F24838FBB0043758A /* ComputerMajorNoticeController.swift */; };
@@ -99,6 +100,7 @@
 		C4FC4F9EE1730B6003B991FA /* Pods-MAP2-20201.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MAP2-20201.release.xcconfig"; path = "Target Support Files/Pods-MAP2-20201/Pods-MAP2-20201.release.xcconfig"; sourceTree = "<group>"; };
 		CB5F4881249109DC005002DA /* TotalCondition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalCondition.swift; sourceTree = "<group>"; };
 		CB5F488324911512005002DA /* TotalConditionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalConditionCell.swift; sourceTree = "<group>"; };
+		CB5F48852492780D005002DA /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		CB66269B24597330003F6196 /* KnuNoticeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnuNoticeController.swift; sourceTree = "<group>"; };
 		CB66269D2459784E003F6196 /* KnuNoticeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnuNoticeCell.swift; sourceTree = "<group>"; };
 		CBA1083F24838FBB0043758A /* ComputerMajorNoticeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComputerMajorNoticeController.swift; sourceTree = "<group>"; };
@@ -215,6 +217,7 @@
 				0CD1B7FF248CC6E0003EFB2C /* img */,
 				7670BBF4244731E600BF28B5 /* LaunchScreen.storyboard */,
 				0CD70DB624557C2E00E673A4 /* Main.storyboard */,
+				CB5F48852492780D005002DA /* ActivityIndicator.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -391,6 +394,7 @@
 				CB5F4882249109DC005002DA /* TotalCondition.swift in Sources */,
 				093D77FE24570D6900E50437 /* Notice.swift in Sources */,
 				CB66269E2459784E003F6196 /* KnuNoticeCell.swift in Sources */,
+				CB5F48862492780D005002DA /* ActivityIndicator.swift in Sources */,
 				CB66269C24597330003F6196 /* KnuNoticeController.swift in Sources */,
 				093D78022457CB5100E50437 /* Calendar.swift in Sources */,
 				CBA1084024838FBB0043758A /* ComputerMajorNoticeController.swift in Sources */,
