@@ -71,9 +71,22 @@ extension ComputerMajorNoticeController: UITableViewDataSource, UITableViewDeleg
         return cell
     }
     
-    // cell click event
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("hi");
+        tableView.deselectRow(at: indexPath, animated: false)
+        print("Row: \(indexPath.row)")
+        var webViewController = WebViewController()
+        var baseURL : String = "http://computer.knu.ac.kr/06_sub/02_sub_2.html"
+        baseURL += Notice_knu?[indexPath.row].ref ?? ""
+        print(baseURL)
+        webViewController = self.storyboard?.instantiateViewController(withIdentifier: "WebViewController") as! WebViewController
+        
+        webViewController.myURLString = baseURL
+        self.navigationController?.pushViewController(webViewController, animated: true)
+
+
+        
+            
+        
     }
     
 }

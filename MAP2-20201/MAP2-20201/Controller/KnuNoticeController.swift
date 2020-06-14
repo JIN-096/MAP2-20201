@@ -91,9 +91,28 @@ extension KnuNoticeController: UITableViewDataSource,UITableViewDelegate {
         return cell
     }
     
-    // cell click event
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("hi");
+        tableView.deselectRow(at: indexPath, animated: false)
+        
+        var webViewController = WebViewController()
+        let attr = Notice_knu?[indexPath.row].ref.getArrayAfterRegex(regex: "(?<=')[a-zA-Z0-9]*(?=')")
+        let param1 : String = attr?[0] ?? ""
+        let param2 : String = attr?[1] ?? ""
+        let param3 : String = attr?[3] ?? ""
+        let baseURL : String = "https://knu.ac.kr/wbbs/wbbs/bbs/btin/stdViewBtin.action?btin.doc_no="+param1+"&btin.appl_no="+param2+"&btin.page=1&btin.search_type=&btin.search_text=&popupDeco=&btin.note_div="+param3+"&menu_idx=42"
+        
+        
+//        baseURL += Notice_knu?[indexPath.row].ref ?? ""
+//        print("BASEURL: \(baseURL)")
+        webViewController = self.storyboard?.instantiateViewController(withIdentifier: "WebViewController") as! WebViewController
+        
+        webViewController.myURLString = baseURL
+        self.navigationController?.pushViewController(webViewController, animated: true)
+
+
+        
+            
+        
     }
 }
 
