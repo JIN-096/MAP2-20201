@@ -25,6 +25,11 @@ class GradeController : UIViewController{
         super.viewDidLoad()
         
         configure()
+        
+        //tableview datasource and delegate
+        gradeTableView.dataSource = self
+        gradeTableView.delegate = self
+        
         autoLayout()
         gradeTableView.tableFooterView = UIView()
         Crawler.shared.grade_crawl(category: 0){ result in
@@ -65,7 +70,7 @@ class GradeController : UIViewController{
             ])
     }
 }
-extension GradeController : UITableViewDataSource{
+extension GradeController : UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return gradeList?.count ?? 0
     }
@@ -85,4 +90,9 @@ extension GradeController : UITableViewDataSource{
         cell.subject_rating.text = gradeList?[indexPath.row].rating ?? ""
         return cell
     }
+    
+//    // cell click event
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        print("hi");
+//    }
 }

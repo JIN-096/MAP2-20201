@@ -26,6 +26,11 @@ class KnuNoticeController : UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // tableview datasource and delegate
+        tableView.delegate = self
+        tableView.dataSource = self
+        
         configure()
         addSubView()
         autoLayout()
@@ -72,7 +77,7 @@ class KnuNoticeController : UIViewController{
     
 }
 
-extension KnuNoticeController: UITableViewDataSource {
+extension KnuNoticeController: UITableViewDataSource,UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return Notice_knu?.count ?? 0
     }
@@ -82,6 +87,11 @@ extension KnuNoticeController: UITableViewDataSource {
         cell.notice_num.text = Notice_knu?[indexPath.row].num ?? ""
         cell.notice_title.text = Notice_knu?[indexPath.row].title ?? ""
         return cell
+    }
+    
+    // cell click event
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("hi");
     }
 }
 
