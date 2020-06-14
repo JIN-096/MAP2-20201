@@ -52,6 +52,11 @@ class ScheduleController : UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // tableview datasource, delegate
+        tableView.dataSource = self
+        tableView.delegate = self
+        
         configure()
         Show_Year.text="2020년"
         Show_Month.text="1월"
@@ -89,7 +94,7 @@ class ScheduleController : UIViewController{
     
 }
 
-extension ScheduleController: UITableViewDataSource{
+extension ScheduleController: UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return calendars?[month-1].schedules.count ?? 0
     }
@@ -107,6 +112,11 @@ extension ScheduleController: UITableViewDataSource{
        return cell
         
     }
+    
+//    // cell click event
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        print("hi")
+//    }
 
    
 }

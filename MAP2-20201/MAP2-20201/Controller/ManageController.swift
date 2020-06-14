@@ -43,6 +43,7 @@ class ManageController : UIViewController
         activityIndicator.showActivityIndicator(text: "로딩 중")
         managetableview.dataSource = self
         managetableview.delegate = self
+        
         Crawler.shared.grade_crawl(category: 0){ result in
             switch result {
             case .success(let grade) :
@@ -158,26 +159,26 @@ extension ManageController : UITableViewDataSource, UITableViewDelegate{
         return sections[section]
     }
     
-    // Called when Cell is selected.
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
-    {
-        if indexPath.section == 0
-        {
-            print(totalcondition[indexPath.row])
-        }
-        else if indexPath.section == 1
-        {
-            print(necessaryList[indexPath.row])
-        }
-        else if indexPath.section == 2
-        {
-            print(designList[indexPath.row])
-        }
-        else
-        {
-            return
-        }
-    }
+//    // Called when Cell is selected.
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
+//    {
+//        if indexPath.section == 0
+//        {
+//            print(totalcondition[indexPath.row])
+//        }
+//        else if indexPath.section == 1
+//        {
+//            print(necessaryList[indexPath.row])
+//        }
+//        else if indexPath.section == 2
+//        {
+//            print(designList[indexPath.row])
+//        }
+//        else
+//        {
+//            return
+//        }
+//    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0{
@@ -225,9 +226,6 @@ extension ManageController : UITableViewDataSource, UITableViewDelegate{
         {
             return UITableViewCell()
         }
-        
-        
-       // return cell
     }
     
     
