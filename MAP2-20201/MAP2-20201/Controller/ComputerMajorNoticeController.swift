@@ -73,7 +73,7 @@ extension ComputerMajorNoticeController: UITableViewDataSource, UITableViewDeleg
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: false)
-        print("Row: \(indexPath.row)")
+        
         var webViewController = WebViewController()
         var baseURL : String = "http://computer.knu.ac.kr/06_sub/02_sub_2.html"
         baseURL += Notice_knu?[indexPath.row].ref ?? ""

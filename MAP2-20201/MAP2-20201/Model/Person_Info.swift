@@ -17,13 +17,13 @@ public class Person_Info
 {
     
     static let shared = Person_Info()
-     var login_status : Bool = false
+    var login_status : Bool = false
     var mileage_login_status : Bool = false
      lazy var cookie : [HTTPCookie] = []
     lazy var mileagecookie : [HTTPCookie] = []
     private var _name : String = ""
-    private var _id : String = ""
-    private var _passwd : String = ""
+    static var _id : String = ""
+    static var _passwd : String = ""
     private var _student_num : String = ""
     
     private init()
@@ -38,8 +38,9 @@ public class Person_Info
         //self.login_status = false
 //        let ID = "wan2good"
 //        let PW = "wan2good!@"
-        let ID = "wan2good"
-        let PW = "cjswl1256z!@"
+        let ID = Person_Info._id
+        let PW = Person_Info._passwd
+//        var returnValue: Bool = false
 //          let ID = "shs960501"
 //          let PW = "song5961!"
         let parameter = [
@@ -83,26 +84,34 @@ public class Person_Info
                 
             }
         }
+        
     }
     
     func login()
     {
+        
         try_login{result in
             switch result{
             case .success(let cookies):
-                self.login_status = true
                 print("success")
                 //print(cookies)
                 Person_Info.shared.cookie = cookies
-               self.setCookies(cookies : cookies)
+                self.setCookies(cookies : cookies)
+                self.login_status = true
+                
+                
                 break
+                
             case .failure(let error):
                 print("false")
              //   Person_Info.shared.login_status = false
                 print("error : \(error)")
+                
+                
                 break
             }
         }
+        
     }
     
      func try_mileage_login(completionHandler : @escaping (Result<[HTTPCookie], Error>) -> Void)

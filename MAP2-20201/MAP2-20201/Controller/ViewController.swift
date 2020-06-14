@@ -116,7 +116,8 @@ class ViewController: UIViewController {
        // Crawler.shared.grade_crawl(category: 0)
         //print(Person_Info.shared.login_status)
         
-        Person_Info.shared.login()
+        
+        
         Person_Info.shared.mileage_login()
 //        Person_Info.shared.setCookies(cookies: )
 //0 : 전체 1: 

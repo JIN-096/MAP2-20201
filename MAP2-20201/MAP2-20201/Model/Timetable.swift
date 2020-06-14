@@ -15,6 +15,7 @@ struct Timetable
     var professor : String
     var roomName : String
     var courseTimes : [CourseTime] = []
+    var course_url : String
 }
 struct CourseTime
 {

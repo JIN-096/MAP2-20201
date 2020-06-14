@@ -52,7 +52,25 @@ class TimeTableViewController: UIViewController, ElliotableDelegate, ElliotableD
         // Do any additional setup after loading the view.
     }
     func elliotable(elliotable: Elliotable, didSelectCourse selectedCourse: ElliottEvent) {
-      }
+        var baseURL : String = ""
+        let checkId = selectedCourse.courseId
+        for time in timeTable!{
+            if checkId == time.courseId{
+                baseURL = time.course_url
+                print(baseURL)
+                break
+            }
+        }
+        
+        var webViewController = WebViewController()
+        
+        webViewController = self.storyboard?.instantiateViewController(withIdentifier: "WebViewController") as! WebViewController
+        
+        webViewController.myURLString = baseURL
+        webViewController.modalTransitionStyle = .coverVertical
+        self.present(webViewController, animated: true, completion: nil)
+        
+    }
       
       func elliotable(elliotable: Elliotable, didLongSelectCourse longSelectedCourse: ElliottEvent) {
       }

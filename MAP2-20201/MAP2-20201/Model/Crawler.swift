@@ -560,7 +560,7 @@ class Crawler
                     checkindex = checkindex + 1
                     //print(try element.text())
                 }
-                timeTables.append(Timetable(courseId: sub_course_id, courseName: sub_course_name, professor: sub_professor, roomName: sub_room, courseTimes: sub_coursetime))
+                timeTables.append(Timetable(courseId: sub_course_id, courseName: sub_course_name, professor: sub_professor, roomName: sub_room, courseTimes: sub_coursetime,course_url: url))
                 sub_coursetime.removeAll()
             } catch let error {
                 print("Error: \(error)")

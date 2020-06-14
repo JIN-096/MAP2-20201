@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="qco-eM-ome">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="N6m-gC-WCZ">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -175,7 +175,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="fuf-hP-LYC">
             <objects>
-                <tabBarController id="qco-eM-ome" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="TabBarViewController" id="qco-eM-ome" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="9lU-G0-Wxs"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="p2p-aU-VKu">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
@@ -220,10 +220,10 @@
             </objects>
             <point key="canvasLocation" x="-704.34782608695662" y="779.46428571428567"/>
         </scene>
-        <!--View Controller-->
+        <!--Login View Controller-->
         <scene sceneID="y7G-AC-E9X">
             <objects>
-                <viewController id="N6m-gC-WCZ" sceneMemberID="viewController">
+                <viewController id="N6m-gC-WCZ" customClass="LoginViewController" customModule="MAP2_20201" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="OCB-gF-6Yu">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -283,7 +283,7 @@
                                         <rect key="frame" x="46" y="12" width="186" height="34"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -295,6 +295,9 @@
                                 <state key="normal" title="Login">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="Login:" destination="N6m-gC-WCZ" eventType="touchUpInside" id="EUE-NK-dYC"/>
+                                </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="knucsepuzzle.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="NJu-EF-Zlk">
                                 <rect key="frame" x="80" y="215" width="250" height="128"/>
@@ -318,6 +321,11 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="tmD-GI-hQl"/>
                     </view>
+                    <connections>
+                        <outlet property="idField" destination="6vn-Pz-ffW" id="P0A-Pf-7nC"/>
+                        <outlet property="passwdField" destination="ok4-gC-C5G" id="km1-Yd-R9r"/>
+                        <outlet property="studentNumberField" destination="yLf-n7-COM" id="zg6-og-V7I"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IHU-S6-MVk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -404,7 +412,7 @@
                                         <rect key="frame" x="46" y="12" width="186" height="34"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -462,7 +470,7 @@
         <!--Home-->
         <scene sceneID="Q8G-MX-2B5">
             <objects>
-                <viewController id="Rfg-Ud-rQh" customClass="ViewController" customModule="MAP2_20201" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MainViewController" id="Rfg-Ud-rQh" customClass="ViewController" customModule="MAP2_20201" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="k17-rn-GK9"/>
                         <viewControllerLayoutGuide type="bottom" id="pXp-1s-Z3Z"/>
