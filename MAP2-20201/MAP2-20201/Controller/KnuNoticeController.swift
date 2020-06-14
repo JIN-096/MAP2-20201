@@ -21,6 +21,8 @@ class KnuNoticeController : UIViewController{
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.register(KnuNoticeCell.self, forCellReuseIdentifier: KnuNoticeCell.identifier)
+        
+       
         return tableView
     }()
     
@@ -72,7 +74,7 @@ class KnuNoticeController : UIViewController{
     
 }
 
-extension KnuNoticeController: UITableViewDataSource {
+extension KnuNoticeController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return Notice_knu?.count ?? 0
     }
@@ -83,5 +85,17 @@ extension KnuNoticeController: UITableViewDataSource {
         cell.notice_title.text = Notice_knu?[indexPath.row].title ?? ""
         return cell
     }
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        tableView.deselectRow(at: indexPath, animated: false)
+//        print("Row: \(indexPath.row)")
+//        guard let cell = tableView.cellForRow(at: indexPath) else { return }
+        
+//        if let viewController = storyboard?.instantiateViewController(identifier: "TrailViewController") as? TrailViewController {
+//            viewController.trail = selectedTrail
+//            navigationController?.pushViewController(viewController, animated: true)
+//        }
+//    }
+    
 }
+
 

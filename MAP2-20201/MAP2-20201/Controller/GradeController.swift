@@ -23,7 +23,8 @@ class GradeController : UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        let activityIndicator = ActivityIndicator(view: view, navigationController: nil, tabBarController: nil)
+        activityIndicator.showActivityIndicator(text: "로딩 중")
         configure()
         autoLayout()
         gradeTableView.tableFooterView = UIView()
@@ -36,6 +37,7 @@ class GradeController : UIViewController{
 //                }
                 print("success")
                 self.gradeTableView.reloadData()
+                activityIndicator.stopActivityIndicator()
                 break
             case .failure(let error) :
                 print(error)

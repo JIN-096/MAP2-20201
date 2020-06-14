@@ -34,6 +34,7 @@
 		0CD1B80F248CD7C9003EFB2C /* 15-1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0CD1B80E248CD7C9003EFB2C /* 15-1.jpg */; };
 		0CD70DB824557C2E00E673A4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0CD70DB624557C2E00E673A4 /* Main.storyboard */; };
 		3C6AA7CD7F49C15B68A30814 /* Pods_MAP2_20201.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57EE6CF08F673ED04457F45F /* Pods_MAP2_20201.framework */; };
+		76266A52249603E90080C7CF /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76266A51249603E90080C7CF /* WebViewController.swift */; };
 		7648BA9D24838EDC009F4CE1 /* TableViewCellDepartment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7648BA9C24838EDC009F4CE1 /* TableViewCellDepartment.swift */; };
 		7648BA9F24839030009F4CE1 /* DepartmentNoticeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7648BA9E24839030009F4CE1 /* DepartmentNoticeController.swift */; };
 		7657F6A9248613E2003E5A1E /* GradeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7657F6A8248613E2003E5A1E /* GradeCell.swift */; };
@@ -86,6 +87,7 @@
 		0CD70DB724557C2E00E673A4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		11B0844BC99428C1C8B20928 /* Pods-MAP2-20201.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MAP2-20201.debug.xcconfig"; path = "Target Support Files/Pods-MAP2-20201/Pods-MAP2-20201.debug.xcconfig"; sourceTree = "<group>"; };
 		57EE6CF08F673ED04457F45F /* Pods_MAP2_20201.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MAP2_20201.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		76266A51249603E90080C7CF /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		7648BA9C24838EDC009F4CE1 /* TableViewCellDepartment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCellDepartment.swift; sourceTree = "<group>"; };
 		7648BA9E24839030009F4CE1 /* DepartmentNoticeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepartmentNoticeController.swift; sourceTree = "<group>"; };
 		7657F6A8248613E2003E5A1E /* GradeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradeCell.swift; sourceTree = "<group>"; };
@@ -234,6 +236,7 @@
 				098B06E8248E68EC005E3BDB /* TimeTableViewController.swift */,
 				CBA46F022483DA4700148CDC /* ScheduleController.swift */,
 				CBAE1C0C248F5F7E007C7B71 /* ManageController.swift */,
+				76266A51249603E90080C7CF /* WebViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -389,6 +392,7 @@
 				CBA46F032483DA4700148CDC /* ScheduleController.swift in Sources */,
 				CBAE1C11248F7365007C7B71 /* Necessary.swift in Sources */,
 				CBA46F052483DAEE00148CDC /* ScheduleCell.swift in Sources */,
+				76266A52249603E90080C7CF /* WebViewController.swift in Sources */,
 				093D780424581E0E00E50437 /* Grade.swift in Sources */,
 				7657F6AB24861466003E5A1E /* GradeController.swift in Sources */,
 				CB5F4882249109DC005002DA /* TotalCondition.swift in Sources */,

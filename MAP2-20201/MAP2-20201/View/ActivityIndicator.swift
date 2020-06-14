@@ -26,7 +26,7 @@ struct ActivityIndicator {
         viewForActivityIndicator.frame = CGRect(x: 0.0, y: 0.0, width: 100, height: 100)
         viewForActivityIndicator.center = CGPoint(x: self.view.frame.size.width / 2.0, y: (self.view.frame.size.height - tabBarHeight - navigationBarHeight) / 2.0)
         viewForActivityIndicator.layer.cornerRadius = 10
-        viewForActivityIndicator.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 0.598483033)
+        //viewForActivityIndicator.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 0.598483033)
         backgroundView.addSubview(viewForActivityIndicator)
         
         activityIndicatorView.center = CGPoint(x: viewForActivityIndicator.frame.size.width / 2.0, y: (viewForActivityIndicator.frame.size.height - tabBarHeight - navigationBarHeight) / 2.0 + 10)

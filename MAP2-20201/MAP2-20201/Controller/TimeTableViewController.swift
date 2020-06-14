@@ -18,6 +18,8 @@ class TimeTableViewController: UIViewController, ElliotableDelegate, ElliotableD
     
     override func viewDidLoad() {
         //  수강하고 있는 정보 가져오기
+        let activityIndicator = ActivityIndicator(view: view, navigationController: nil, tabBarController: nil)
+        activityIndicator.showActivityIndicator(text: "로딩 중")
                 Crawler.shared.time_table_crawl(semester: nil){ result in
                     switch result{
         
@@ -39,6 +41,7 @@ class TimeTableViewController: UIViewController, ElliotableDelegate, ElliotableD
 //                            }
 //                        }
                         self.elliotable.reloadData()
+                        activityIndicator.stopActivityIndicator()
                     case .failure(let error):
                         print(error)
                     }

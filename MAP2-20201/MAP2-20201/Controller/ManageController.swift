@@ -24,6 +24,7 @@ class ManageController : UIViewController
     var type5 = 0 // 설계과목
     var type6 = 0 // 필수과목
     
+    
     // 섹션 항목
     private let sections: [String] = ["졸업 요건 달성 현황", "필수 과목 이수 현황","설계 과목 이수 현황"]
     
@@ -38,6 +39,8 @@ class ManageController : UIViewController
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let activityIndicator = ActivityIndicator(view: view, navigationController: nil, tabBarController: nil)
+        activityIndicator.showActivityIndicator(text: "로딩 중")
         managetableview.dataSource = self
         managetableview.delegate = self
         Crawler.shared.grade_crawl(category: 0){ result in
@@ -106,6 +109,7 @@ class ManageController : UIViewController
                 self.totalcondition.append(TotalCondition(type: "설계학점", condition: String(self.type5)+" / 16 학점"))
                 self.totalcondition.append(TotalCondition(type: "필수과목", condition: String(self.type6)+" / 14 과목"))
                 self.managetableview.reloadData()
+                activityIndicator.stopActivityIndicator()
                 break
             case .failure(let error) :
                 print(error)
