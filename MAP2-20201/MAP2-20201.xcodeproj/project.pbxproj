@@ -15,6 +15,7 @@
 		093D780424581E0E00E50437 /* Grade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093D780324581E0E00E50437 /* Grade.swift */; };
 		098B06E3248D655B005E3BDB /* Timetable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098B06E2248D655B005E3BDB /* Timetable.swift */; };
 		098B06E9248E68EC005E3BDB /* TimeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098B06E8248E68EC005E3BDB /* TimeTableViewController.swift */; };
+		098B06EB2495FC9E005E3BDB /* Mileage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 098B06EA2495FC9E005E3BDB /* Mileage.swift */; };
 		0C9068ED24887F9700C7DD8A /* planimage2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0C9068EC24887F9700C7DD8A /* planimage2.jpg */; };
 		0C9068EF2488834000C7DD8A /* gradeimage2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0C9068EE2488834000C7DD8A /* gradeimage2.jpg */; };
 		0C9068F12488A1BF00C7DD8A /* knucsepuzzle.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0C9068F02488A1BF00C7DD8A /* knucsepuzzle.jpg */; };
@@ -67,6 +68,7 @@
 		093D780324581E0E00E50437 /* Grade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grade.swift; sourceTree = "<group>"; };
 		098B06E2248D655B005E3BDB /* Timetable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Timetable.swift; sourceTree = "<group>"; };
 		098B06E8248E68EC005E3BDB /* TimeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTableViewController.swift; sourceTree = "<group>"; };
+		098B06EA2495FC9E005E3BDB /* Mileage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mileage.swift; sourceTree = "<group>"; };
 		0C9068EC24887F9700C7DD8A /* planimage2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = planimage2.jpg; sourceTree = "<group>"; };
 		0C9068EE2488834000C7DD8A /* gradeimage2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = gradeimage2.jpg; sourceTree = "<group>"; };
 		0C9068F02488A1BF00C7DD8A /* knucsepuzzle.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = knucsepuzzle.jpg; sourceTree = "<group>"; };
@@ -209,6 +211,7 @@
 				CBAE1C10248F7365007C7B71 /* Necessary.swift */,
 				CB5F4881249109DC005002DA /* TotalCondition.swift */,
 				CB5F488324911512005002DA /* TotalConditionCell.swift */,
+				098B06EA2495FC9E005E3BDB /* Mileage.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -389,6 +392,7 @@
 				CBA10842248393FF0043758A /* ComputerMajorCell.swift in Sources */,
 				098B06E9248E68EC005E3BDB /* TimeTableViewController.swift in Sources */,
 				7648BA9F24839030009F4CE1 /* DepartmentNoticeController.swift in Sources */,
+				098B06EB2495FC9E005E3BDB /* Mileage.swift in Sources */,
 				CBA46F032483DA4700148CDC /* ScheduleController.swift in Sources */,
 				CBAE1C11248F7365007C7B71 /* Necessary.swift in Sources */,
 				CBA46F052483DAEE00148CDC /* ScheduleCell.swift in Sources */,
