@@ -14,8 +14,8 @@ class MileageViewController : UIViewController{
     var mileageList : [Mileage]?
     
     
-   
     @IBOutlet weak var mileagetableview: UITableView!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,7 +23,7 @@ class MileageViewController : UIViewController{
         activityIndicator.showActivityIndicator(text: "로딩 중")
         
         configure()
-        autoLayout()
+        //autoLayout()
         mileagetableview.tableFooterView = UIView()
         Crawler.shared.mileage_crawl{ result in
             switch result {
@@ -54,6 +54,7 @@ class MileageViewController : UIViewController{
         mileagetableview.delegate = self
         mileagetableview.estimatedRowHeight = 50
         mileagetableview.rowHeight = UITableView.automaticDimension
+        mileagetableview.separatorInset.left = 0
     }
     private func autoLayout(){
         let guide = view.safeAreaLayoutGuide

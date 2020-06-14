@@ -60,6 +60,7 @@ class GradeController : UIViewController{
         gradeTableView.dataSource = self
         gradeTableView.estimatedRowHeight = 50
         gradeTableView.rowHeight = UITableView.automaticDimension
+        gradeTableView.separatorInset.left = 0
     }
     
     private func autoLayout(){
