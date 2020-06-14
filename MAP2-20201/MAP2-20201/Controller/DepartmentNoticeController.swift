@@ -32,6 +32,7 @@ class DepartmnetNoticeController : UIViewController{
         departmentTableView.delegate = self
         departmentTableView.estimatedRowHeight = 50
         departmentTableView.rowHeight = UITableView.automaticDimension
+        departmentTableView.separatorInset.left = 0
     }
     
     private func autoLayout(){

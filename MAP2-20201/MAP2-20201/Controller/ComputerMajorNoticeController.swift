@@ -40,6 +40,7 @@ class ComputerMajorNoticeController : UIViewController{
         tableView.dataSource = self
         tableView.estimatedRowHeight = 50
         tableView.rowHeight = UITableView.automaticDimension
+        tableView.separatorInset.left = 0
     }
     
     private func addSubView(){

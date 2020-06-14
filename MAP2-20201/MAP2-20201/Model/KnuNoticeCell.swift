@@ -18,6 +18,8 @@ class KnuNoticeCell : UITableViewCell{
         notice_num.translatesAutoresizingMaskIntoConstraints = false
         notice_num.sizeToFit()
         notice_num.numberOfLines = 0
+        notice_num.textAlignment = .center
+        notice_num.textColor = #colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1)
         return notice_num
     }()
     
@@ -26,6 +28,7 @@ class KnuNoticeCell : UITableViewCell{
         notice_title.translatesAutoresizingMaskIntoConstraints = false
         notice_title.numberOfLines = 0
         notice_title.sizeToFit()
+        notice_title.textAlignment = .left
         return notice_title
     }()
 
@@ -47,12 +50,12 @@ class KnuNoticeCell : UITableViewCell{
         notice_num.topAnchor.constraint(equalTo: self.topAnchor),
         notice_num.leadingAnchor.constraint(equalTo: self.leadingAnchor),
         notice_num.widthAnchor.constraint(equalToConstant: 50),
-        notice_num.heightAnchor.constraint(equalToConstant: 50),
+        notice_num.heightAnchor.constraint(equalToConstant: 45),
         
         notice_title.topAnchor.constraint(equalTo: self.topAnchor),
         notice_title.leadingAnchor.constraint(equalTo: notice_num.trailingAnchor, constant: margin),
         notice_title.widthAnchor.constraint(equalToConstant: 50),
-        notice_title.heightAnchor.constraint(equalToConstant: 50),
+        notice_title.heightAnchor.constraint(equalToConstant: 45),
         notice_title.trailingAnchor.constraint(equalTo: self.trailingAnchor),
         
         

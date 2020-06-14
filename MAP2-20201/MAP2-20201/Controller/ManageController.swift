@@ -133,6 +133,7 @@ class ManageController : UIViewController
         managetableview.dataSource = self
         managetableview.estimatedRowHeight = 50
         managetableview.rowHeight = UITableView.automaticDimension
+        managetableview.separatorInset.left = 0
     }
     
     private func autoLayout(){
