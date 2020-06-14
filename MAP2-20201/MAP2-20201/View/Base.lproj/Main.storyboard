@@ -2,7 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="N6m-gC-WCZ">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -334,7 +334,7 @@
         <!--Mileage View Controller-->
         <scene sceneID="wfw-uz-xTW">
             <objects>
-                <viewController id="i5w-Y2-hNr" customClass="MileageViewController" customModule="MAP2_20201" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MileageViewController" id="i5w-Y2-hNr" customClass="MileageViewController" customModule="MAP2_20201" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="CEf-c2-P8N">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -362,10 +362,10 @@
             </objects>
             <point key="canvasLocation" x="-3549.275362318841" y="-350.22321428571428"/>
         </scene>
-        <!--View Controller-->
+        <!--Mileage Login Controller-->
         <scene sceneID="Wgj-M0-Nyw">
             <objects>
-                <viewController id="uoV-jw-byd" sceneMemberID="viewController">
+                <viewController id="uoV-jw-byd" customClass="MileageLoginController" customModule="MAP2_20201" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="445-Oh-0WF">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -442,7 +442,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <segue destination="i5w-Y2-hNr" kind="push" id="BBp-7p-iBk"/>
+                                    <action selector="mLogin:" destination="uoV-jw-byd" eventType="touchUpInside" id="YcE-kO-v3c"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="비밀번호" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jDW-cs-fTp">
@@ -464,6 +464,11 @@
                         <viewLayoutGuide key="safeArea" id="deZ-Rh-uGX"/>
                     </view>
                     <navigationItem key="navigationItem" id="QCR-41-n4p"/>
+                    <connections>
+                        <outlet property="midField" destination="TC9-tC-JrE" id="MPS-YI-Pha"/>
+                        <outlet property="mpasswdField" destination="wex-Oj-EwS" id="NVx-V6-iO8"/>
+                        <outlet property="mstudentNumberField" destination="5tS-uj-k2y" id="NDS-Si-fQK"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ov9-RS-Dxs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

@@ -25,6 +25,8 @@ public class Person_Info
     static var _id : String = ""
     static var _passwd : String = ""
     private var _student_num : String = ""
+    static var _m_id : String = ""
+    static var _m_passwd : String = ""
     
     private init()
     {}
@@ -87,40 +89,40 @@ public class Person_Info
         
     }
     
-    func login()
-    {
-        
-        try_login{result in
-            switch result{
-            case .success(let cookies):
-                print("success")
-                //print(cookies)
-                Person_Info.shared.cookie = cookies
-                self.setCookies(cookies : cookies)
-                self.login_status = true
-                
-                
-                break
-                
-            case .failure(let error):
-                print("false")
-             //   Person_Info.shared.login_status = false
-                print("error : \(error)")
-                
-                
-                break
-            }
-        }
-        
-    }
+//    func login()
+//    {
+//
+//        try_login{result in
+//            switch result{
+//            case .success(let cookies):
+//                print("success")
+//                //print(cookies)
+//                Person_Info.shared.cookie = cookies
+//                self.setCookies(cookies : cookies)
+//                self.login_status = true
+//
+//
+//                break
+//
+//            case .failure(let error):
+//                print("false")
+//             //   Person_Info.shared.login_status = false
+//                print("error : \(error)")
+//
+//
+//                break
+//            }
+//        }
+//
+//    }
     
      func try_mileage_login(completionHandler : @escaping (Result<[HTTPCookie], Error>) -> Void)
         {
             //로그인 다시 할때 false로 하고 새로 쿠키 받아옴.(좀 더 생각)
             
             //self.login_status = false
-            let ID = "wan2good"
-            let PW = "wan2good!@"
+            let ID = Person_Info._m_id
+            let PW = Person_Info._m_passwd
     //        let ID = "gwh1108"
     //        let PW = "tkrk1357@"
 //              let ID = "cse158861"
