@@ -320,16 +320,16 @@ class Crawler
             do{
                 let elements : Elements = try document!.select(selector)
                 for element in elements{
-                    print("==========================")
+//                    print("==========================")
                     let full_date = try element.select("dt").text()
                     let year = Int(full_date.prefix(4))!
                     let start_index = full_date.index(full_date.startIndex,offsetBy: 5)
                     let end_index = full_date.index(full_date.startIndex, offsetBy: 6)
                     let month = Int(full_date[start_index...end_index]) ?? 0
                     
-                    print(try element.select("dt").text())
+//                    print(try element.select("dt").text())
                     
-                    print("---------월 별 구분 ---------")
+//                    print("---------월 별 구분 ---------")
                     var schedules : [Schedule] = []
                     let fuck : Elements = try element.select(".list > ul > li")
                     for fucking in fuck{
@@ -338,11 +338,11 @@ class Crawler
                         let index = full_string.index(full_string.startIndex,offsetBy: 8)
                         let content = String(full_string.suffix(from: index))
                         schedules.append(Schedule(day: day, content: content))
-                        print("날짜 : " + day)
-                        print("내용 : " + content)
+//                        print("날짜 : " + day)
+//                        print("내용 : " + content)
                     }
                     calendars.append(Calendar(year: year, month: month, schedules: schedules))
-                    print("===================")
+//                    print("===================")
                 }
             }catch let error{
                 print("error : \(error)")
@@ -544,8 +544,8 @@ class Crawler
                             let end = detailtime[detailtime.endIndex - 1]
                             let course_startTime = TimeFormatChange(unformatted_time: start, type: 0)
                             let course_endTime = TimeFormatChange(unformatted_time: end, type: 1)
-                            print("get after start translate : \(course_startTime)")
-                            print("get after end translate : \(course_endTime)")
+//                            print("get after start translate : \(course_startTime)")
+//                            print("get after end translate : \(course_endTime)")
                                 
                             sub_coursetime.append(CourseTime(courseDay: day, startTime: course_startTime, endTime: course_endTime))
                         }
@@ -699,7 +699,7 @@ class Crawler
                         var option = true
                            var document : Document = Document.init("")
                            document = try SwiftSoup.parse(html)
-                      //  print(document)
+//                        print(document)
                         let elements : Elements = try document.select(selector)
                         for element in elements{
                             if try element.className() != "return_line"{
@@ -728,14 +728,14 @@ class Crawler
                                     }
                                     check_index = check_index + 1
                                 }
-                                if option{
+                                if option && sub_description != "" {
                                 print("\(sub_description) \(sub_mileage) \(sub_date)")
                                 myMileage.append(Mileage(description: sub_description, mileage: sub_mileage, date: sub_date))
                                 }
                             }
                         }
                         let element = try document.select(".my_mileage")
-                        myMileage.append(Mileage(description: try element.text(), mileage: "", date: ""))
+                        myMileage.append(Mileage(description: try "                            " + element.text(), mileage: "", date: ""))
                         print(try element.text())
                            completiontHandler(.success(myMileage))
                        }catch{

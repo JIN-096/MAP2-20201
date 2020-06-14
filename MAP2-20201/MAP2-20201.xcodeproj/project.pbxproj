@@ -58,6 +58,8 @@
 		CBAE1C0D248F5F7E007C7B71 /* ManageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAE1C0C248F5F7E007C7B71 /* ManageController.swift */; };
 		CBAE1C0F248F6083007C7B71 /* ManageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAE1C0E248F6083007C7B71 /* ManageCell.swift */; };
 		CBAE1C11248F7365007C7B71 /* Necessary.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAE1C10248F7365007C7B71 /* Necessary.swift */; };
+		CBF5CDDC249635D60025E1AC /* MileageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF5CDDB249635D60025E1AC /* MileageViewController.swift */; };
+		CBF5CDDE2496366E0025E1AC /* MileageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF5CDDD2496366E0025E1AC /* MileageCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -116,6 +118,8 @@
 		CBAE1C0C248F5F7E007C7B71 /* ManageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageController.swift; sourceTree = "<group>"; };
 		CBAE1C0E248F6083007C7B71 /* ManageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageCell.swift; sourceTree = "<group>"; };
 		CBAE1C10248F7365007C7B71 /* Necessary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Necessary.swift; sourceTree = "<group>"; };
+		CBF5CDDB249635D60025E1AC /* MileageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MileageViewController.swift; sourceTree = "<group>"; };
+		CBF5CDDD2496366E0025E1AC /* MileageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MileageCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -214,6 +218,7 @@
 				CB5F4881249109DC005002DA /* TotalCondition.swift */,
 				CB5F488324911512005002DA /* TotalConditionCell.swift */,
 				098B06EA2495FC9E005E3BDB /* Mileage.swift */,
+				CBF5CDDD2496366E0025E1AC /* MileageCell.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -243,6 +248,7 @@
 				CBAE1C0C248F5F7E007C7B71 /* ManageController.swift */,
 				76266A51249603E90080C7CF /* WebViewController.swift */,
 				76266A53249635C00080C7CF /* LoginViewController.swift */,
+				CBF5CDDB249635D60025E1AC /* MileageViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -389,6 +395,7 @@
 			files = (
 				CB5F488424911512005002DA /* TotalConditionCell.swift in Sources */,
 				093D77F72455823B00E50437 /* Crawler.swift in Sources */,
+				CBF5CDDE2496366E0025E1AC /* MileageCell.swift in Sources */,
 				098B06E3248D655B005E3BDB /* Timetable.swift in Sources */,
 				CBAE1C0D248F5F7E007C7B71 /* ManageController.swift in Sources */,
 				7670BBEE244731E500BF28B5 /* ViewController.swift in Sources */,
@@ -409,6 +416,7 @@
 				CB5F48862492780D005002DA /* ActivityIndicator.swift in Sources */,
 				CB66269C24597330003F6196 /* KnuNoticeController.swift in Sources */,
 				093D78022457CB5100E50437 /* Calendar.swift in Sources */,
+				CBF5CDDC249635D60025E1AC /* MileageViewController.swift in Sources */,
 				CBA1084024838FBB0043758A /* ComputerMajorNoticeController.swift in Sources */,
 				093D77FC2456FBF300E50437 /* Person_Info.swift in Sources */,
 				7670BBEA244731E500BF28B5 /* AppDelegate.swift in Sources */,

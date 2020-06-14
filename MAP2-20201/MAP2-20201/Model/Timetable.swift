@@ -36,10 +36,10 @@ func TimeFormatChange(unformatted_time : String, type : Int)-> String{
     let typeIndex = unformatted_time.index(before: unformatted_time.endIndex)
     let time_type = String(unformatted_time[typeIndex...])
     let time_num = String(unformatted_time[unformatted_time.startIndex..<typeIndex])
-    print("get unfomatted_time : \(unformatted_time)")
-    print("type : \(type)")
-    print("잘린 스트링 A|B : \(time_type)")
-    print("잘린 스트링 시간 : \(time_num)")
+//    print("get unfomatted_time : \(unformatted_time)")
+//    print("type : \(type)")
+//    print("잘린 스트링 A|B : \(time_type)")
+//    print("잘린 스트링 시간 : \(time_num)")
     //type 0은 startTime 1은 endTime
     if type == 0 {
         if time_num == "000"{
