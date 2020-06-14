@@ -699,7 +699,7 @@ class Crawler
                         var option = true
                            var document : Document = Document.init("")
                            document = try SwiftSoup.parse(html)
-                      //  print(document)
+//                        print(document)
                         let elements : Elements = try document.select(selector)
                         for element in elements{
                             if try element.className() != "return_line"{
@@ -728,14 +728,14 @@ class Crawler
                                     }
                                     check_index = check_index + 1
                                 }
-                                if option{
+                                if option && sub_description != "" {
                                 print("\(sub_description) \(sub_mileage) \(sub_date)")
                                 myMileage.append(Mileage(description: sub_description, mileage: sub_mileage, date: sub_date))
                                 }
                             }
                         }
                         let element = try document.select(".my_mileage")
-                        myMileage.append(Mileage(description: try element.text(), mileage: "", date: ""))
+                        myMileage.append(Mileage(description: try "                            " + element.text(), mileage: "", date: ""))
                         print(try element.text())
                            completiontHandler(.success(myMileage))
                        }catch{
