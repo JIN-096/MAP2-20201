@@ -8,7 +8,6 @@
 
 import Foundation
 import UIKit
-
 class KnuNoticeController : UIViewController{
     
     var Notice_knu : [Notice]? = Crawler.shared.knu_notice_crawl(URL: nil)
@@ -29,7 +28,18 @@ class KnuNoticeController : UIViewController{
         configure()
         addSubView()
         autoLayout()
-      
+//        Crawler.shared.mileage_crawl{ result in
+//            switch result {
+//            case.success(let mileage):
+//                print("success")
+//                break
+//            case.failure(let error):
+//                print("failure")
+//                break
+//            }
+            
+       // }
+        
         //학기 받아오기
 //        Crawler.shared.time_table_semester_crawl{ result in
 //            switch result{
@@ -44,8 +54,6 @@ class KnuNoticeController : UIViewController{
 //                break
 //            }
 //        }
-      
-        
     }
     
     private func configure()

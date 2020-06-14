@@ -8,7 +8,6 @@
 
 import UIKit
 import SwiftSoup
-
 class ViewController: UIViewController {
     
     override func viewDidLoad() {
@@ -118,6 +117,7 @@ class ViewController: UIViewController {
         //print(Person_Info.shared.login_status)
         
         Person_Info.shared.login()
+        Person_Info.shared.mileage_login()
 //        Person_Info.shared.setCookies(cookies: )
 //0 : 전체 1: 
 //            Crawler.shared.grade_crawl(category: 0)

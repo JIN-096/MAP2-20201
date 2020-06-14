@@ -682,9 +682,72 @@ class Crawler
     
     
     //추후 진행 예정 마일리지 내용 없어서 안에 구조를 모름 ㅎ
-    func mileage_crawl()
+    func mileage_crawl(completiontHandler: @escaping (Result<[Mileage],Error>) -> Void)
     {
-        
+       
+        let selector = "tr"
+               AF.request("http://knusys9.knu.ac.kr/swed/swed/mileage/mileageReqList.action", method: .get).responseString{response in
+                   switch response.result
+                   {
+                   case .success(let html) :
+                       do{
+                           var myMileage = [Mileage]()
+                           //let html = try response.result.get()
+                        var sub_description : String = ""
+                        var sub_mileage : String = ""
+                        var sub_date : String = ""
+                        var option = true
+                           var document : Document = Document.init("")
+                           document = try SwiftSoup.parse(html)
+                      //  print(document)
+                        let elements : Elements = try document.select(selector)
+                        for element in elements{
+                            if try element.className() != "return_line"{
+                                let subelement = try element.select("td")
+                                var check_index = 0
+                                option = true
+                                for data in subelement {
+                                    switch check_index {
+                                    case 3 :
+                                        sub_description = try data.text()
+                                        break
+                                    case 4 :
+                                        sub_mileage = try data.text()
+                                        break
+                                    case 6 :
+                                        if try data.text() == "반려"
+                                        {
+                                            option = false
+                                        }
+                                        break
+                                    case 7 :
+                                        sub_date = try data.text()
+                                        break
+                                    default :
+                                        break
+                                    }
+                                    check_index = check_index + 1
+                                }
+                                if option{
+                                print("\(sub_description) \(sub_mileage) \(sub_date)")
+                                myMileage.append(Mileage(description: sub_description, mileage: sub_mileage, date: sub_date))
+                                }
+                            }
+                        }
+                        let element = try document.select(".my_mileage")
+                        myMileage.append(Mileage(description: try element.text(), mileage: "", date: ""))
+                        print(try element.text())
+                           completiontHandler(.success(myMileage))
+                       }catch{
+                           completiontHandler(.failure(error))
+                       }
+                       break
+                   case .failure(let error) :
+                       print("error : \(error)")
+                       completiontHandler(.failure(error))
+                       break
+                   }
+               }
     }
 }
 

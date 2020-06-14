@@ -7,3 +7,9 @@
 //
 
 import Foundation
+
+struct Mileage{
+    let description : String
+    let mileage : String
+    let date : String
+}
